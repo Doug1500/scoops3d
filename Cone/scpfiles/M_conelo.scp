@@ -1,0 +1,40 @@
+title
+Scoops3D example M; 30 degree cone, lambda = 0.025   
+lengthunits   ceeunits  gammaunits
+m   kPa   kN/m^3   
+water
+no   
+nmat
+1   
+lnum   cee   phi   gamt
+1   172.9   20   19   
+eq
+0   
+method 
+B   
+srch
+box   
+ismin   jsmin   ismax   jsmax   nsrchres
+-5   49   49   49   1   
+zsmin   zsmax   zsrchres
+1900   2800   22   
+irefine   multres   fostol
+1   8   0.1   
+dr   deginc   degmax   numdir
+22   0   0   1   
+vacriterion   armin   armax   vmin   vmax   tol   limcol
+V   0   0   1e6   1e9   100000.0   200   
+remove   foscut
+M   10   
+isqout
+1   
+irelfos
+0   
+icritlattice
+0   
+isubsurf zfrac
+0   1   
+DEM file
+input/cone1000DEM.asc   
+output directory
+M_conelo_output/   

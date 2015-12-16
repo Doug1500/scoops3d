@@ -1,0 +1,42 @@
+title
+Scoops3D example R; Mount Saint Helens   
+lengthunits   ceeunits  gammaunits
+m   kPa   kN/m^3   
+water
+no   
+nmat
+1   
+lnum   cee   phi   gamt
+1   1000.   40.   24.   
+eq
+0   
+method 
+B   
+srch
+box   
+ismin   jsmin   ismax   jsmax   nsrchres
+1   1   96   91   1   
+zsmin   zsmax   zsrchres
+1000   9200   100   
+irefine   multres   fostol
+1   8   0.01   
+dr   deginc   degmax   numdir
+50   0   0   1   
+vacriterion   armin   armax   vmin   vmax   tol   limcol
+V   0   0   .10E+9   3.5E+9   10000000.0   100   
+remove   foscut
+M   5.0   
+isqout
+1   
+irelfos
+1   
+icritlattice
+1   
+ilattice
+1   
+isubsurf zfrac
+1   1   
+DEM file
+input/sthel_res100mDEM.asc   
+output directory
+R_sthel_output/   

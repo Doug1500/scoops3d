@@ -1,0 +1,44 @@
+title
+Scoops3D example B (Arai and Tagyo 1985 example2)nonhomogeneous material properties (layers)   
+lengthunits   ceeunits  gammaunits
+m   kPa   kN/m^3   
+water
+no   
+nmat
+3   
+lnum   cee   phi   gamt
+1   29.4   12   18.82   
+2   9.8   5   18.82   
+3   294   40   18.82   
+eq
+0   
+method 
+B   
+srch
+box   
+ismin   jsmin   ismax   jsmax   nsrchres
+30   67   80   67   1   
+zsmin   zsmax   zsrchres
+40   65   1   
+irefine   multres   fostol
+1   4   0.01   
+dr   deginc   degmax   numdir
+.5   0   0   1   
+vacriterion   armin   armax   vmin   vmax   tol   limcol
+V   0   0   1e4   1e5   1000.0   100   
+remove   foscut
+M   10   
+isqout
+0   
+irelfos
+0   
+icritlattice
+0   
+isubsurf zfrac
+0   1   
+DEM file
+input/emb20DEM.asc   
+layer file
+input/emb20layer   
+output directory
+B_emb20nonhomog_output/  
