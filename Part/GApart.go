@@ -2,6 +2,7 @@ package Part
 
 import (
 	// "fmt"
+	"math"
 	"io/ioutil"
 	"strconv"
 	"os/exec"
@@ -11,13 +12,14 @@ import (
 	"os"
 )
 
-func Partmain(x, y, z, R, alpha float64) (score float64, err bool){
+// func Partmain(x, y, z, R, alpha float64) (score float64, err bool){
+func Partmain(x, y, z, R, alpha, FOS float64, Igood []float64) (score float64, err bool){
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////SINGLE SOIL MATERIAL/////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// FileName := "AraiTagyo"
-	// ASCFile := "emb20DEM.asc"
-	// material := "1   41.65   15   18.82"
+	FileName := "AraiTagyo"
+	ASCFile := "emb20DEM.asc"
+	material := "1   41.65   15   18.82"
 
 	// FileName := "StHelens"
 	// ASCFile := "sthel_res100mDEM.asc"
@@ -28,8 +30,12 @@ func Partmain(x, y, z, R, alpha float64) (score float64, err bool){
 	// material := "1   17630   40   21"
 	// material := "1   1444   30   20"
 	// material := "1   172.9   20   19"
-	
-	// d1 := []byte("title\nScoops3D example R; Mount Saint Helens\nlengthunits   ceeunits  gammaunits\nm   kPa   kN/m^3\nwater\nno\nnmat\n1\nlnum   cee   phi   gamt\n"+material+"\neq\n0\nmethod\nB\nsrch\nsingle\nxcen ycen zcen rad angle\n"+ strconv.FormatFloat(x,'E',-1, 64)+" " + strconv.FormatFloat(y,'E',-1, 64) +" "+ strconv.FormatFloat(z,'E',-1, 64)+" "+ strconv.FormatFloat(R,'E',-1, 64) +" "+ strconv.FormatFloat(alpha,'E',-1, 64) +"\nremove   foscut\nM   10.0\nisqout\n0\nirelfos\n0\nicritlattice\n0\nisubsurf zfrac\n0   1\nDEM file\n"+FileName+"/input/"+ASCFile+"\noutput directory\nOutput/")
+
+	// FileName := "DonaldGiam"
+	// ASCFile := "emb10DEM.asc"
+	// material := "1   3   19.6   20"
+
+	d1 := []byte("title\nScoops3D example R; Mount Saint Helens\nlengthunits   ceeunits  gammaunits\nm   kPa   kN/m^3\nwater\nno\nnmat\n1\nlnum   cee   phi   gamt\n"+material+"\neq\n0\nmethod\nB\nsrch\nsingle\nxcen ycen zcen rad angle\n"+ strconv.FormatFloat(x,'E',-1, 64)+" " + strconv.FormatFloat(y,'E',-1, 64) +" "+ strconv.FormatFloat(z,'E',-1, 64)+" "+ strconv.FormatFloat(R,'E',-1, 64) +" "+ strconv.FormatFloat(alpha,'E',-1, 64) +"\nremove   foscut\nM   10.0\nisqout\n0\nirelfos\n0\nicritlattice\n0\nisubsurf zfrac\n0   1\nDEM file\n"+FileName+"/input/"+ASCFile+"\noutput directory\nOutput/")
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////MULTIPLE MATERIAL/////////////////////////////////////////////////////////////////////////////
@@ -41,6 +47,13 @@ func Partmain(x, y, z, R, alpha float64) (score float64, err bool){
 	// material3 := "3   294   40   18.82" 
 	// LayerFile := "emb20layer"
 
+	// FileName := "DonaldGiam"
+	// ASCFile := "emb10DEM.asc"
+	// material1 := "1   0   38   19.5"
+	// material2 := "2   5.3   23   19.5"
+	// material3 := "3   7.2   20   19.5" 
+	// LayerFile := "emb10layer"
+
 	// d1 := []byte("title\nScoops3D example R; Mount Saint Helens\nlengthunits   ceeunits  gammaunits\nm   kPa   kN/m^3\nwater\nno\nnmat\n3\nlnum   cee   phi   gamt\n"+material1+"\n"+material2+"\n"+material3+"\neq\n0\nmethod\nB\nsrch\nsingle\nxcen ycen zcen rad angle\n"+ strconv.FormatFloat(x,'E',-1, 64)+" " + strconv.FormatFloat(y,'E',-1, 64) +" "+ strconv.FormatFloat(z,'E',-1, 64)+" "+ strconv.FormatFloat(R,'E',-1, 64) +" "+ strconv.FormatFloat(alpha,'E',-1, 64) +"\nremove   foscut\nM   5.0\nisqout\n0\nirelfos\n0\nicritlattice\n0\nisubsurf zfrac\n0   1\nDEM file\n"+FileName+"/input/"+ASCFile+"\nlayer file\n"+FileName+"/input/"+LayerFile+"\noutput directory\nOutput/")
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -50,6 +63,11 @@ func Partmain(x, y, z, R, alpha float64) (score float64, err bool){
 	// ASCFile := "emb20DEM.asc"
 	// material := "1   -1   -1   -1"
 	// MaterialFile := "emb20mat3D.txt"
+
+	// FileName := "DonaldGiam"
+	// ASCFile := "emb10DEM.asc"
+	// material := "1   -1   -1   -1"
+	// MaterialFile := "emb10mat3d.txt"
 
 	// d1 := []byte("title\nScoops3D example R; Mount Saint Helens\nlengthunits   ceeunits  gammaunits\nm   kPa   kN/m^3\nwater\nno\nstr3d   linterp\n1   0\nnmat\n1\nlnum   cee   phi   gamt\n"+material+"\neq\n0\nmethod\nB\nsrch\nsingle\nxcen ycen zcen rad angle\n"+ strconv.FormatFloat(x,'E',-1, 64)+" " + strconv.FormatFloat(y,'E',-1, 64) +" "+ strconv.FormatFloat(z,'E',-1, 64)+" "+ strconv.FormatFloat(R,'E',-1, 64) +" "+ strconv.FormatFloat(alpha,'E',-1, 64) +"\nremove   foscut\nM   5.0\nisqout\n0\nirelfos\n0\nicritlattice\n0\nisubsurf zfrac\n0   1\nDEM file\n"+FileName+"/input/"+ASCFile+"\nmaterial properties file\n"+FileName+"/input/"+MaterialFile+"\noutput directory\nOutput/")	
 	
@@ -77,11 +95,11 @@ func Partmain(x, y, z, R, alpha float64) (score float64, err bool){
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////MATERIAL DATA RU///////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	FileName := "Cone"
-	ASCFile := "cone1000DEM.asc"
-	material := "1   1444   30   20   0.2"
+	// FileName := "Cone"
+	// ASCFile := "cone1000DEM.asc"
+	// material := "1   1444   30   20   0.2"
 
-	d1 := []byte("title\nScoops3D example R; Mount Saint Helens\nlengthunits   ceeunits  gammaunits\nm   kPa   kN/m^3\nwater\nru\nnmat\n1\nlnum   cee   phi   gamt   ru\n"+material+"\neq\n0\nmethod\nB\nsrch\nsingle\nxcen ycen zcen rad angle\n"+ strconv.FormatFloat(x,'E',-1, 64)+" " + strconv.FormatFloat(y,'E',-1, 64) +" "+ strconv.FormatFloat(z,'E',-1, 64)+" "+ strconv.FormatFloat(R,'E',-1, 64) +" "+ strconv.FormatFloat(alpha,'E',-1, 64) +"\nremove   foscut\nM   10.0\nisqout\n0\nirelfos\n0\nicritlattice\n0\nisubsurf zfrac\n0   1\nDEM file\n"+FileName+"/input/"+ASCFile+"\noutput directory\nOutput/")
+	// d1 := []byte("title\nScoops3D example R; Mount Saint Helens\nlengthunits   ceeunits  gammaunits\nm   kPa   kN/m^3\nwater\nru\nnmat\n1\nlnum   cee   phi   gamt   ru\n"+material+"\neq\n0\nmethod\nB\nsrch\nsingle\nxcen ycen zcen rad angle\n"+ strconv.FormatFloat(x,'E',-1, 64)+" " + strconv.FormatFloat(y,'E',-1, 64) +" "+ strconv.FormatFloat(z,'E',-1, 64)+" "+ strconv.FormatFloat(R,'E',-1, 64) +" "+ strconv.FormatFloat(alpha,'E',-1, 64) +"\nremove   foscut\nM   10.0\nisqout\n1\nirelfos\n0\nicritlattice\n0\nisubsurf zfrac\n0   1\nDEM file\n"+FileName+"/input/"+ASCFile+"\noutput directory\nOutput/")
 
 	err1 := ioutil.WriteFile("test.scp", d1, 0644)
 	Check(err1)
@@ -133,6 +151,12 @@ func Partmain(x, y, z, R, alpha float64) (score float64, err bool){
 	if err3 := scanner.Err(); err3 != nil {
 		log.Fatal(err3)
 	}
+
+	if score== 1000.0 || score == 100.0{
+		I := []float64{x, y, z, R, alpha}
+		score = SetValue(FOS, Igood, I)
+	}
+
 	return score, err
 }
 
@@ -142,3 +166,20 @@ func Check(e error) {
 	}
 }
 
+func SetValue(FOS float64, Igood, I []float64) float64 {
+	Ifinal := make([]float64, len(Igood))
+	for i := 0; i < len(Igood); i++ {
+		Ifinal[i] = (Igood[i]-I[i])*(Igood[i]-I[i])
+	}
+	score := math.Sqrt(SUM(Ifinal))*1000.0 + FOS
+	// fmt.Println(score, I)
+	return score
+}
+
+func SUM(slice []float64) float64 {
+	sum := 0.0
+	for i := 0; i < len(slice); i++ {
+		sum = slice[i] + sum
+	}
+	return sum
+}

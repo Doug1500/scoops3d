@@ -1,0 +1,40 @@
+title
+Scoops3D example F (Donald and Giam example1a) homogeneous material properties   
+lengthunits   ceeunits  gammaunits
+m   kPa   kN/m^3   
+water
+no   
+nmat
+1   
+lnum   cee   phi   gamt
+1   3   19.6   20   
+eq
+0   
+method 
+B   
+srch
+box   
+ismin   jsmin   ismax   jsmax   nsrchres
+15   51   35   51   1   
+zsmin   zsmax   zsrchres
+45   60   0.25   
+irefine   multres   fostol
+1   2   0.01   
+dr   deginc   degmax   numdir
+0.5   0   0   1   
+vacriterion   armin   armax   vmin   vmax   tol   limcol
+V   0   0   5e2   5e3   50.0   100   
+remove   foscut
+M   10   
+isqout
+0   
+irelfos
+0   
+icritlattice
+0   
+isubsurf zfrac
+0   1   
+DEM file
+input/emb10DEM.asc   
+output directory
+F_emb10_output/   

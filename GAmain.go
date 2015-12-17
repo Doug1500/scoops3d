@@ -1,10 +1,10 @@
 package main
 
 import (
-	// "github.com/cpmech/gosl/mpi"
-	// "github.com/cpmech/sgal"
-	"code.google.com/p/gosl/mpi"
-	"code.google.com/p/sgal"
+	"github.com/cpmech/gosl/mpi"
+	"github.com/cpmech/sgal"
+	// "code.google.com/p/gosl/mpi"
+	// "code.google.com/p/sgal"
 	"fmt"
 	"scoops3d/Part"
 	// IMPORT!!!
@@ -17,8 +17,8 @@ func main() {
 	
 	mpi.Start(true)
 	// FOS := 5.452500e+00 
-	// Igood := []float64{561787, 5.11232e+06, 3297.43, 1989.39, 261.211}
-	FOS := 1000.0
+	Igood := make([]float64, 5)
+	FOS :=  1000.0
 
 	counter := 0.0
 	c360 :=0.0
@@ -36,19 +36,21 @@ func main() {
 		
 		counter = counter + 1.0
 
-		if alpha > 360.0 {
-			score = 10000.0
-			c360 = c360+1.0
-		}else{	
-			score, err = Part.Partmain(x, y, z, R, alpha)
+		// if alpha > 360.0 {
+		// 	score = 10000.0
+		// 	c360 = c360+1.0
+		// }else{	
+		// score, err = Part.Partmain(x, y, z, R, alpha)
+		score, err = Part.Partmain(x, y, z, R, alpha, FOS, Igood)
 		// fmt.Println(counter)
-		}
+		// }
 
 		if score<FOS{
 			FOS = score
-			// for i := 0; i < len(Igood); i++ {
-			// 	Igood[i]=I[i]				
-			// }
+			for i := 0; i < len(Igood); i++ {
+				Igood[i]=I[i]				
+			}
+			fmt.Println(FOS, Igood)
 			cimprov = cimprov + 1.0
 		}
 
@@ -70,10 +72,13 @@ func main() {
 	var d sgal.Data
 
 	//AriaTagyo
-	// err := d.Init([]float64{0.0, 0.0, 0.0, 0.0, 0.0}, []float64{100.0, 100.0, 100.0, 100.0, 6.2857}) //Creating the grid for possible answers
+	err := d.Init([]float64{0.0, 0.0, 0.0, 0.0, 0.0}, []float64{100.0, 100.0, 100.0, 100.0, 6.2857}) //Creating the grid for possible answers
 
 	//Cone
-	err := d.Init([]float64{0.0, 0.0, 0.0, 0.0, 0.0}, []float64{4000.0, 4000.0, 1500.0, 2500.0, 6.2857}) //Creating the grid for possible answers
+	// err := d.Init([]float64{0.0, 0.0, 0.0, 0.0, 0.0}, []float64{4000.0, 4000.0, 1500.0, 2500.0, 6.2857}) //Creating the grid for possible answers
+
+	//DonaldGiam
+	// err := d.Init([]float64{0.0, 0.0, 0.0, 0.0, 0.0}, []float64{100.0, 100.0, 100.0, 100.0, 6.2857}) //Creating the grid for possible answers
 
 	//Mount StHelen
 	// err := d.Init([]float64{557974.631687, 5111446.1291019, 0.0, 0.0, 0.0}, []float64{568974.631687, 5122446.1291019, 4000.0, 5000.0, 360.0}) //Creating the grid for possible answers
@@ -86,12 +91,12 @@ func main() {
 	d.Szpop, d.Dtmig, d.Tf, d.Dtout, d.Seltype = 200, 1000, int(test), GAout, 0
 	d.Pmut = Pmut
 
-	// d.Ranking = true
-	// err = d.Run(ovfcn, report, nil)
+	d.Ranking = true
+	err = d.Run(ovfcn, report, nil)
 
-	silent := false
-	err = d.Run(ovfcn, report, silent, nil)
-	d.UseTime, d.ShowBest, d.Ranking = true, true, true
+	// silent := false
+	// err = d.Run(ovfcn, report, silent, nil)
+	// d.UseTime, d.ShowBest, d.Ranking = true, true, true
 	
 
 	if err != nil {

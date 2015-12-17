@@ -1,0 +1,44 @@
+title
+Scoops3D example I (Donald and Giam example1c) nonhomogeneous material properties (3D file,irregular)   
+lengthunits   ceeunits  gammaunits
+m   kPa   kN/m^3   
+water
+no   
+str3d   linterp
+1   0   
+nmat
+1   
+lnum   cee   phi   gamt
+1   -1   -1   -1   
+eq
+0   
+method 
+B   
+srch
+box   
+ismin   jsmin   ismax   jsmax   nsrchres
+20   51   40   51   1   
+zsmin   zsmax   zsrchres
+40   55   0.25   
+irefine   multres   fostol
+1   2   0.01   
+dr   deginc   degmax   numdir
+0.5   0   0   1   
+vacriterion   armin   armax   vmin   vmax   tol   limcol
+V   0   0   5e2   5e3   50.0   100   
+remove   foscut
+M   10   
+isqout
+0   
+irelfos
+0   
+icritlattice
+0   
+isubsurf zfrac
+0   1   
+DEM file
+input/emb10DEM.asc   
+material properties file
+input/emb10mat3D.txt   
+output directory
+I_emb10nonhomog3D_output/   

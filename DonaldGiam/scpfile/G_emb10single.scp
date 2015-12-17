@@ -1,0 +1,32 @@
+title
+Scoops3D example G (Donald and Giam example1a) homogeneous material properties   
+lengthunits   ceeunits  gammaunits
+m   kPa   kN/m^3   
+water
+no   
+nmat
+1   
+lnum   cee   phi   gamt
+1   3   19.6   20   
+eq
+0   
+method 
+B   
+srch
+single   
+xcen   ycen   zcen   rad   angle
+10.2500   25.2500   54.0000   2.89617E+01   365   
+remove   foscut
+M   10   
+isqout
+0   
+irelfos
+0   
+icritlattice
+0   
+isubsurf zfrac
+0   1   
+DEM file
+input/emb10DEM.asc   
+output directory
+G_emb10single_output/   
