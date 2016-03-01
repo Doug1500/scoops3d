@@ -1,0 +1,62 @@
+    *************************************************************
+                               Scoops3D
+          3D Slope Stability Throughout a Digital Landscape
+                        U.S. Geological Survey
+                             Version: 1.0                                               
+    *************************************************************
+
+
+This file: Output/ytest_out.txt                                                                                                                                                                                                        
+
+Start date and time: 02/17/2016  09:31:13
+Description: Scoops3D example R; Mount Saint Helens                                                                                  
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+I. INPUT FILES:
+  DEM file: AraiTagyo/input/emb20DEM.asc                                                                                                                                                                                                
+  Main parameter input file: test.scp                                                                                                                                                                                                
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+II. SIMULATION PARAMETERS:
+------------
+DEM
+Input file for topography: AraiTagyo/input/emb20DEM.asc                                                                                                                                                                                                
+  Dimensions of DEM grid (x,y):                                      133   133
+  Number of cells in DEM grid:                                           17689
+  Number of non-null cells in DEM grid:                                  17689
+  Horizontal resolution of DEM grid (m ):                                 0.50
+  Minimum elevation of DEM (m ):                                        15.000
+  Maximum elevation of DEM (m ):                                        35.000
+  xllcorner and yllcorner (m ):                           0.000          0.000
+------------
+UNIT DESCRIPTORS (used for labels in output files)
+lengthunits   ceeunits    gammaunits
+     m          kPa         kN/m^3  
+------------
+MATERIAL PROPERTIES
+Property method:                                                         layer
+Number of layers (nmat):                                                     1
+                      total unit wt.  
+lnum    cee     phi      gamt  
+        kPa             kN/m^3  
+  1     38.82  17.769   18.820 
+------------
+GROUNDWATER CONFIGURATION
+Groundwater method (water):                                               None
+------------
+EARTHQUAKE LOADING
+Horizontal pseudo-acceleration coefficient (dimensionless)(eq):          0.000
+------------
+LIMIT-EQUILIBRIUM METHOD
+Analysis method (method):                                               Bishop
+------------
+SEARCH METHOD (srch)                                                    single
+         xcen(m )        ycen(m )   zcen(m )  radius(m )
+         24.6543         34.1117   50.5277    37.50000
+
+Slip direction, relative to lattice,                                  178.2290
+------------
+ADDITIONAL OUTPUT FILES AND PARAMETERS
+Create new DEM file (remove):                                                M
+   (surface with minimum F<foscut removed)
+F cutoff for removing material from new DEM (foscut):                1.000E+01

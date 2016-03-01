@@ -77,7 +77,7 @@ rm = []
 
 for i in range(len(x)):
 	# counter checking
-	print i
+	# print i
 	for j in range(len(y)):
 		p = lines[i].split()
 		# q = lines1[i].split()
@@ -85,7 +85,7 @@ for i in range(len(x)):
 		xm.append(x[i])
 		ym.append(y[j])
 		pm.append(p[j])
-		print x[i], y[j], p[j]
+		print x[i],",", y[j],",", p[j]
 		# qm.append(q[j])
 		# if float(r[j]) > 0.0:
 		# 	rm.append(r[j])

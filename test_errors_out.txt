@@ -1,3 +1,0 @@
-*** ERROR - Scoops3D  execution terminated
-problem: no valid sets for single surface (contains boundary or truncated surface)                                               
-possible solution: check coordinates for center of sphere                                                                                  

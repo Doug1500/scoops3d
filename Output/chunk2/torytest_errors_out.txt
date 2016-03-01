@@ -1,0 +1,3 @@
+*** ERROR - Scoops3D  execution terminated
+problem: invalid value for "rad"; "rad" must be > 0                                                                              
+possible solution: check Scoops3D manual for description of required parameters                                                            

@@ -40,18 +40,19 @@ pm = []
 
 for i in range(len(x)):
 	# counter checking
-	print i
+	# print i
 	for j in range(len(y)):
 		p = lines[i].split()
-		print x[i], y[j], p[j]
+		# if float(p[j]) == -9999.0:
+			# print x[i],",", y[j],",", 900.0
+		# else: 
+			# print x[i],",", y[j],",", p[j]
 		xm.append(x[i])
 		ym.append(y[j])
 		if float(p[j]) == -9999.0:
 			pm.append(1000)
 		if float(p[j]) > 0.0:
 			pm.append(p[j])
-
-
 
 axm=np.array(xm, dtype=float)
 aym=np.array(ym, dtype=float)
@@ -63,11 +64,15 @@ plt.ylabel('Distance (m)')
 ax.set_zlabel('Height (m)')
 
 ax.scatter(axm, aym, apm, c='brown', s=100.0)
+# ax.plot([564126.0, 564126.0],[5.11825e+06, 5.11825e+06],zs=[3837.82, 1866.98])
+
 # plt.savefig('/home/doug/shared/'+NAME+'.png',dpi=150)
 for ii in xrange(0, 360, 10):
 	ax.view_init(elev=10.0, azim=ii)
 	fig.set_size_inches(20.0, 10.0)
 	# plt.savefig("/home/doug/mygo/src/SCOOP/movies/movie"+str(ii)+".png", dpi=150)
+
+ax.axis('equal')
 
 plt.show()
 

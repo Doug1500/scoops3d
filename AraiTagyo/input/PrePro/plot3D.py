@@ -47,13 +47,16 @@ azF = np.array(zF, dtype=float)
 cmap = plt.matplotlib.cm.jet
 
 ax.scatter(axF, ayF, azF, cmap=cmap)
-ax.set_title('Embankment Problem', fontsize='20')
+ax.set_title('Aria and Tagyo', fontsize='30')
 
-plt.xlabel('Wdith (m)')
-plt.ylabel('Distance (m)')
-ax.set_zlabel('Height (m)')
+plt.xlabel('Wdith (m)', fontsize='26')
+plt.ylabel('Distance (m)', fontsize='26')
+ax.set_zlabel('Height (m)', fontsize='26')
 
-colour = 'green'
+# matplotlib.rc('xtick', labelsize='30')
+
+
+colour = 'brown'
 colour1= 'red'
 colour2= 'grey'
 
@@ -77,7 +80,7 @@ rm = []
 
 for i in range(len(x)):
 	# counter checking
-	print i
+	# print i
 	for j in range(len(y)):
 		p = lines[i].split()
 		q = lines1[i].split()
@@ -85,7 +88,7 @@ for i in range(len(x)):
 		xm.append(x[i])
 		ym.append(y[j])
 		pm.append(p[j])
-		# print x[i], y[j], p[j]
+		print x[i],",", y[j],",", p[j]
 		qm.append(q[j])
 		if float(r[j]) > 0.0:
 			rm.append(r[j])
@@ -98,9 +101,10 @@ apm=np.array(pm, dtype=float)
 aqm=np.array(qm, dtype=float)
 arm=np.array(rm, dtype=float)
 
-ax.scatter(axm, aym, aqm, color= colour1)
-ax.scatter(axm, aym, arm, color= colour2)
+# ax.scatter(axm, aym, aqm, color= colour1)
+# ax.scatter(axm, aym, arm, color= colour2)
 ax.scatter(axm, aym, apm, color= colour)
+# ax.bar(axm, aym, apm)
 # ax.text(50.0, 30.0, 40.0, "HAY", color="red")
 
 plt.show()
