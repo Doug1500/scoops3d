@@ -1,0 +1,32 @@
+title
+Scoops3D example R; Mount Saint Helens
+lengthunits   ceeunits  gammaunits
+m   kPa   kN/m^3
+water
+no
+nmat
+1
+lnum   cee   phi   gamt
+1   1.058722794652366E+02   2.4159298961551833E+01   2.4E+01
+eq
+0
+method
+B
+srch
+single
+xcen ycen zcen rad angle
+5.649989272324833E+05 5.116578021519228E+06 3.508862355153943E+03 1.686480669305486E+03 3.6831917829466056E+03
+remove   foscut
+M   10.0
+isqout
+0
+irelfos
+0
+icritlattice
+0
+isubsurf zfrac
+0   1
+DEM file
+StHelens/input/sthel_res100mDEM.asc
+output directory
+Output/

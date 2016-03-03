@@ -24,7 +24,7 @@ func main() {
 	phi11[0] = phikmean[0] + phiksd[0]*RI*math.Cos(th1)
 	su11[0] = sukmean[0] + suksd[0]*RI*math.Sin(th1)
 
-	FOSS, err := Part.Partmain(x, y, z, R, alpha, su11, phi11, gamma)
+	FOSS, err := Part.Partmain(x, y, z, R, alpha*180*7/22, 0, su11, phi11, gamma)
 	
 	score := 10000.0
 	if math.Abs(FOSS-1.0) < RITolerance && err == false {

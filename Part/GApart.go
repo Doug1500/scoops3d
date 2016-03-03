@@ -12,21 +12,22 @@ import (
 	"os"
 )
 
-func Partmain(x, y, z, R, alpha float64, su, phi, gamma []float64 ) (score float64, err bool){
+func Partmain(x, y, z, R, alpha float64, mprank int, su, phi, gamma []float64 ) (score float64, err bool){
 // func Partmain(x, y, z, R, alpha float64,rank int, su, phi, gamma []float64 ) (score float64, err bool){
 // func Partmain(x, y, z, R, alpha, FOS float64, Igood []float64) (score float64, err bool){
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////SINGLE SOIL MATERIAL/////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	FileName := "AraiTagyo"
-	ASCFile := "emb20DEM.asc"
-	material := "1   "+strconv.FormatFloat(su[0],'E',-1, 64)+"   "+strconv.FormatFloat(phi[0],'E',-1, 64)+"   "+strconv.FormatFloat(gamma[0],'E',-1, 64)
+	rank :=	strconv.Itoa(mprank)
+	// FileName := "AraiTagyo"
+	// ASCFile := "emb20DEM.asc"
+	// material := "1   "+strconv.FormatFloat(su[0],'E',-1, 64)+"   "+strconv.FormatFloat(phi[0],'E',-1, 64)+"   "+strconv.FormatFloat(gamma[0],'E',-1, 64)
 	// material := "1   41.65   15   18.82"
 			 // tag	Cohesion phi gamma	
 
-	// FileName := "StHelens"
-	// ASCFile := "sthel_res100mDEM.asc"
-	// material := "1   "+strconv.FormatFloat(su[0],'E',-1, 64)+"   "+strconv.FormatFloat(phi[0],'E',-1, 64)+"   "+strconv.FormatFloat(gamma[0],'E',-1, 64)
+	FileName := "StHelens"
+	ASCFile := "sthel_res100mDEM.asc"
+	material := "1   "+strconv.FormatFloat(su[0],'E',-1, 64)+"   "+strconv.FormatFloat(phi[0],'E',-1, 64)+"   "+strconv.FormatFloat(gamma[0],'E',-1, 64)
 	// material := "1   1000.0   40.0   24.0"
 	
 	// FileName := "Cone"
@@ -115,15 +116,15 @@ func Partmain(x, y, z, R, alpha float64, su, phi, gamma []float64 ) (score float
 	// d1 := []byte("title\nScoops3D example R; Mount Saint Helens\nlengthunits   ceeunits  gammaunits\nm   kPa   kN/m^3\nwater\nru\nnmat\n1\nlnum   cee   phi   gamt   ru\n"+material+"\neq\n0\nmethod\nB\nsrch\nsingle\nxcen ycen zcen rad angle\n"+ strconv.FormatFloat(x,'E',-1, 64)+" " + strconv.FormatFloat(y,'E',-1, 64) +" "+ strconv.FormatFloat(z,'E',-1, 64)+" "+ strconv.FormatFloat(R,'E',-1, 64) +" "+ strconv.FormatFloat(alpha,'E',-1, 64) +"\nremove   foscut\nM   10.0\nisqout\n1\nirelfos\n0\nicritlattice\n0\nisubsurf zfrac\n0   1\nDEM file\n"+FileName+"/input/"+ASCFile+"\noutput directory\nOutput/")
 
 	// err1 := ioutil.WriteFile("test"+strconv.Itoa(rank)+".scp", d1, 0644)
-	err1 := ioutil.WriteFile("test.scp", d1, 0644)
+	err1 := ioutil.WriteFile("test"+rank+".scp", d1, 0644)
 	Check(err1)
 
 	//exe.go --> 
-	exec.Command("/home/yewintun/mygo/src/scoops3d/fortrancode/scoops3d.exe").Run()
+	exec.Command("/home/yewintun/mygo/src/scoops3d/fortrancode/scoops3d"+rank+".exe").Run()
 	
 	//read.go --> read test_out.txt -->FOS
 	// file, err3 := os.Open("/home/yewintun/mygo/src/scoops3d/Output/test"+strconv.Itoa(rank)+"_out.txt")
-	file, err3 := os.Open("/home/yewintun/mygo/src/scoops3d/Output/test_out.txt")
+	file, err3 := os.Open("/home/yewintun/mygo/src/scoops3d/Output/test"+rank+"_out.txt")
 
 	if err3 != nil {
 		log.Fatal(err3)
@@ -204,15 +205,15 @@ func SoilP() ([]float64, []float64, []float64, []float64, []float64, []float64, 
 	/////////////////////////////////AriaTagyo////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////
 	// suksd, phiksd := 8.0, 3.0
-	suksd := []float64{8.0, 0.0, 0.0}
-	phiksd:= []float64{3.0, 0.0, 0.0}
+	// suksd := []float64{8.0, 0.0, 0.0}
+	// phiksd:= []float64{3.0, 0.0, 0.0}
 
-	sukmean := []float64{41.65, 41.65, 41.65}
-	phikmean:= []float64{15.0, 15.0, 15.0}
-	gamma 	:= []float64{18.82, 18.82, 18.82}
+	// sukmean := []float64{41.65, 41.65, 41.65}
+	// phikmean:= []float64{15.0, 15.0, 15.0}
+	// gamma 	:= []float64{18.82, 18.82, 18.82}
 	
-	su11 := []float64{41.65, 41.65, 41.65}
-	phi11:= []float64{15.0, 15.0, 15.0}
+	// su11 := []float64{41.65, 41.65, 41.65}
+	// phi11:= []float64{15.0, 15.0, 15.0}
 
 	//////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////////Donald&Giam//////////////////////////////////
@@ -230,14 +231,15 @@ func SoilP() ([]float64, []float64, []float64, []float64, []float64, []float64, 
 	// //////////////////////////////////////////////////////////////////////////////
 	// /////////////////////////////////St.Helens////////////////////////////////////
 	// //////////////////////////////////////////////////////////////////////////////
-	// sukmean := []float64{1000.0, 1000.0, 1000.0}
-	// phikmean:= []float64{40.0, 40.0, 40.0}
-	// gamma 	:= []float64{24.0, 24.0, 24.0}
+	sukmean := []float64{1000.0, 1000.0, 1000.0}
+	phikmean:= []float64{40.0, 40.0, 40.0}
+	gamma 	:= []float64{24.0, 24.0, 24.0}
 
-	// suksd, phiksd := 636.3961, 7.071
-
-	// su11 := []float64{1000.0, 1000.0, 1000.0}
-	// phi11:= []float64{40.0, 40.0, 40.0}
+	suksd := []float64{636.3961, 0.0, 0.0}
+	phiksd:= []float64{7.071, 0.0, 0.0}
+	
+	su11 := []float64{1000.0, 1000.0, 1000.0}
+	phi11:= []float64{40.0, 40.0, 40.0}
 
 
 	return suksd, phiksd, sukmean, phikmean, gamma, su11, phi11
