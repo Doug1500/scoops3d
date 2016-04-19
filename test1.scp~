@@ -1,0 +1,34 @@
+title
+Scoops3D example R; Mount Saint Helens
+lengthunits   ceeunits  gammaunits
+m   kPa   kN/m^3
+water
+no
+nmat
+1
+lnum   cee   phi   gamt
+1   6.5E+02   3.5E+01   2.6E+01
+eq
+0
+method
+B
+srch
+single
+xcen ycen zcen rad angle
+1.2389283570556415E+03 9.190172557271252E+02 2.821287533682971E+03 1.0364157735627577E+03 1.0516083457633093E+02
+vacriterion   armin   armax   vmin   vmax   tol   limcol
+V   0   0   2E+7   3E+8   1000.0   100
+remove   foscut
+M   10.0
+isqout
+0
+irelfos
+0
+icritlattice
+0
+isubsurf zfrac
+0   1
+DEM file
+Birgham/input/emb20DEM.asc
+output directory
+Output/

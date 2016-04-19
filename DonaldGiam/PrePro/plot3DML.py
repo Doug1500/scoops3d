@@ -47,9 +47,9 @@ azF = np.array(zF, dtype=float)
 cmap = plt.matplotlib.cm.jet
 
 ax.scatter(axF, ayF, azF, cmap=cmap)
-ax.set_title('Donald and Giam', fontsize='30')
+# ax.set_title('Donald and Giam', fontsize='30')
 
-plt.xlabel('Wdith (m)', fontsize='26')
+# plt.xlabel('Wdith (m)', fontsize='26')
 plt.ylabel('Distance (m)', fontsize='26')
 ax.set_zlabel('Height (m)', fontsize='26')
 
@@ -106,7 +106,8 @@ ax.scatter(axm, aym, aqm, color= "brown")
 ax.scatter(axm, aym, arm, color= "blue")
 ax.scatter(axm, aym, apm, color= "green")
 # ax.text(50.0, 30.0, 40.0, "HAY", color="red")
-
+plt.tick_params(labelsize=24)
+ax.view_init(elev=0.0, azim=360)
 plt.show()
 
 # for i in range(len(x)):

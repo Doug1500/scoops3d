@@ -12,22 +12,23 @@ import (
 	"os"
 )
 
-func Partmain(x, y, z, R, alpha float64, mprank int, su, phi, gamma []float64 ) (score float64, err bool){
+func Partmain(x, y, z, R, alpha float64, mprank int, su, phi, gamma []float64 ) (score, score2 float64, err bool){
 // func Partmain(x, y, z, R, alpha float64,rank int, su, phi, gamma []float64 ) (score float64, err bool){
 // func Partmain(x, y, z, R, alpha, FOS float64, Igood []float64) (score float64, err bool){
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////SINGLE SOIL MATERIAL/////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	rank :=	strconv.Itoa(mprank)
+
 	// FileName := "AraiTagyo"
 	// ASCFile := "emb20DEM.asc"
 	// material := "1   "+strconv.FormatFloat(su[0],'E',-1, 64)+"   "+strconv.FormatFloat(phi[0],'E',-1, 64)+"   "+strconv.FormatFloat(gamma[0],'E',-1, 64)
 	// material := "1   41.65   15   18.82"
 			 // tag	Cohesion phi gamma	
 
-	FileName := "StHelens"
-	ASCFile := "sthel_res100mDEM.asc"
-	material := "1   "+strconv.FormatFloat(su[0],'E',-1, 64)+"   "+strconv.FormatFloat(phi[0],'E',-1, 64)+"   "+strconv.FormatFloat(gamma[0],'E',-1, 64)
+	// FileName := "StHelens"
+	// ASCFile := "sthel_res100mDEM.asc"
+	// material := "1   "+strconv.FormatFloat(su[0],'E',-1, 64)+"   "+strconv.FormatFloat(phi[0],'E',-1, 64)+"   "+strconv.FormatFloat(gamma[0],'E',-1, 64)
 	// material := "1   1000.0   40.0   24.0"
 	
 	// FileName := "Cone"
@@ -39,6 +40,10 @@ func Partmain(x, y, z, R, alpha float64, mprank int, su, phi, gamma []float64 ) 
 	// FileName := "DonaldGiam"
 	// ASCFile := "emb10DEM.asc"
 	// material := "1   3   19.6   20"
+
+	FileName := "Birgham"
+	ASCFile := "emb20DEM.asc"
+	material := "1   "+strconv.FormatFloat(su[0],'E',-1, 64)+"   "+strconv.FormatFloat(phi[0],'E',-1, 64)+"   "+strconv.FormatFloat(gamma[0],'E',-1, 64)
 
 	d1 := []byte("title\nScoops3D example R; Mount Saint Helens\nlengthunits   ceeunits  gammaunits\nm   kPa   kN/m^3\nwater\nno\nnmat\n1\nlnum   cee   phi   gamt\n"+material+"\neq\n0\nmethod\nB\nsrch\nsingle\nxcen ycen zcen rad angle\n"+ strconv.FormatFloat(x,'E',-1, 64)+" " + strconv.FormatFloat(y,'E',-1, 64) +" "+ strconv.FormatFloat(z,'E',-1, 64)+" "+ strconv.FormatFloat(R,'E',-1, 64) +" "+ strconv.FormatFloat(alpha,'E',-1, 64) +"\nremove   foscut\nM   10.0\nisqout\n0\nirelfos\n0\nicritlattice\n0\nisubsurf zfrac\n0   1\nDEM file\n"+FileName+"/input/"+ASCFile+"\noutput directory\nOutput/")
 
@@ -132,7 +137,7 @@ func Partmain(x, y, z, R, alpha float64, mprank int, su, phi, gamma []float64 ) 
 
 	defer file.Close()
 
-	important, important2 := "1st", "2nd"
+	important, important2, important4 := "1st", "2nd", "3rd"
 	counter := 0.0
 
 	scanner := bufio.NewScanner(file)
@@ -146,11 +151,18 @@ func Partmain(x, y, z, R, alpha float64, mprank int, su, phi, gamma []float64 ) 
 				important2 = a
 				counter = counter + 1.0
 			}
+		}else{
+			counter = counter + 1.0
+			if counter == 4.0{
+				important4 = a
+			}
 		}
 	}
 	
 	important3 := strings.Fields(important2)
-	// fmt.Println(important3)
+	important5 := strings.Fields(important4)
+	
+	
 	if important3[0] == "2nd" {
 		score = 1000.0
 	}else{
@@ -159,6 +171,17 @@ func Partmain(x, y, z, R, alpha float64, mprank int, su, phi, gamma []float64 ) 
 			score = 1000.0
 		}
 	}
+
+	if important5[0] == "3rd" {
+		score2 = 1000.0
+	}else{
+		score2, _ =(strconv.ParseFloat(important5[3], 64))
+		// fmt.Println(score2)
+		if score2 == 0.0{
+			score2 = 1000.0
+		}
+	}
+
 
 	if err3 := scanner.Err(); err3 != nil {
 		log.Fatal(err3)
@@ -173,7 +196,7 @@ func Partmain(x, y, z, R, alpha float64, mprank int, su, phi, gamma []float64 ) 
 	// 	score = SetValue(FOS, Igood, I)
 	// }
 
-	return score, err
+	return score, score2, err
 }
 
 func Check(e error) {
@@ -201,46 +224,57 @@ func SUM(slice []float64) float64 {
 }
 
 func SoilP() ([]float64, []float64, []float64, []float64, []float64, []float64, []float64) {
-	//////////////////////////////////////////////////////////////////////////////
-	/////////////////////////////////AriaTagyo////////////////////////////////////
-	//////////////////////////////////////////////////////////////////////////////
-	// suksd, phiksd := 8.0, 3.0
-	// suksd := []float64{8.0, 0.0, 0.0}
-	// phiksd:= []float64{3.0, 0.0, 0.0}
-
+	// ////////////////////////////////////////////////////////////////////////////
+	// ///////////////////////////////AriaTagyo////////////////////////////////////
+	// ////////////////////////////////////////////////////////////////////////////
 	// sukmean := []float64{41.65, 41.65, 41.65}
 	// phikmean:= []float64{15.0, 15.0, 15.0}
 	// gamma 	:= []float64{18.82, 18.82, 18.82}
+
+	// suksd := []float64{8.0, 0.0, 0.0}
+	// phiksd:= []float64{3.0, 0.0, 0.0}
 	
 	// su11 := []float64{41.65, 41.65, 41.65}
 	// phi11:= []float64{15.0, 15.0, 15.0}
 
-	//////////////////////////////////////////////////////////////////////////////
-	/////////////////////////////////Donald&Giam//////////////////////////////////
-	//////////////////////////////////////////////////////////////////////////////
-
-	// suksd, phiksd := 0.000002, 0.000001
-
+	// ////////////////////////////////////////////////////////////////////////////
+	// ///////////////////////////////Donald&Giam//////////////////////////////////
+	// ////////////////////////////////////////////////////////////////////////////
 	// sukmean := []float64{0.0, 5.3, 7.2}
 	// phikmean:= []float64{38.0, 23.0, 20.0}
 	// gamma 	:= []float64{19.5, 19.5, 19.5}
+
+	// suksd := []float64{0.0, 0.53, 1.44}
+	// phiksd:= []float64{3.8, 4.6, 4.0}
 	
 	// su11 := []float64{0.0, 5.3, 7.2}
 	// phi11:= []float64{38.0, 23.0, 20.0}
-	
+
 	// //////////////////////////////////////////////////////////////////////////////
 	// /////////////////////////////////St.Helens////////////////////////////////////
 	// //////////////////////////////////////////////////////////////////////////////
-	sukmean := []float64{1000.0, 1000.0, 1000.0}
-	phikmean:= []float64{40.0, 40.0, 40.0}
-	gamma 	:= []float64{24.0, 24.0, 24.0}
+	// sukmean := []float64{1000.0, 1000.0, 1000.0}
+	// phikmean:= []float64{40.0, 40.0, 40.0}
+	// gamma 	:= []float64{24.0, 24.0, 24.0}
 
-	suksd := []float64{636.3961, 0.0, 0.0}
-	phiksd:= []float64{7.071, 0.0, 0.0}
+	// suksd := []float64{230.0, 0.0, 0.0}
+	// phiksd:= []float64{2.8, 0.0, 0.0}	
 	
-	su11 := []float64{1000.0, 1000.0, 1000.0}
-	phi11:= []float64{40.0, 40.0, 40.0}
+	// su11 := []float64{1000.0, 1000.0, 1000.0}
+	// phi11:= []float64{40.0, 40.0, 40.0}
 
+	//////////////////////////////////////////////////////////////////////////
+	/////////////////////////////Birgham//////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////
+	sukmean := []float64{590.0, 590.0, 590.0}
+	phikmean:= []float64{35.0, 35.0, 35.0}
+	gamma 	:= []float64{18.2, 18.2, 18.2}
+
+	suksd := []float64{300.0, 0.0, 0.0}
+	phiksd:= []float64{2.6, 0.0, 0.0}
+	
+	su11 := []float64{590.0, 590.0, 590.0}
+	phi11:= []float64{35.0, 35.0, 35.0}
 
 	return suksd, phiksd, sukmean, phikmean, gamma, su11, phi11
 }

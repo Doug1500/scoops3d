@@ -7,7 +7,7 @@ no
 nmat
 1
 lnum   cee   phi   gamt
-1   1.0558728204136503E+02   2.4714300347044336E+01   2.4E+01
+1   5.9E+02   3.5E+01   1.82E+01
 eq
 0
 method
@@ -15,7 +15,7 @@ B
 srch
 single
 xcen ycen zcen rad angle
-5.64688313179958E+05 5.115271071146664E+06 3.902119640621404E+03 2.1639794074373635E+03 2.824620424598959E+03
+1.1231581671017686E+03 1.9871551456320105E+03 2.3314157396312025E+03 9.835431735277276E+02 1.8516208326284132E+02
 remove   foscut
 M   10.0
 isqout
@@ -27,6 +27,6 @@ icritlattice
 isubsurf zfrac
 0   1
 DEM file
-StHelens/input/sthel_res100mDEM.asc
+Birgham/input/emb20DEM.asc
 output directory
 Output/
