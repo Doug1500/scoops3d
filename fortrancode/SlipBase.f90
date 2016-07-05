@@ -66,7 +66,7 @@
       errmessage = ' '
       solution = ' '
       problemtype = 'in location of potential failure surface base'  
-     
+  
 !     Loop through all columns in current set.                                         
       DO j = j1,j2      
         DO i = i1,i2

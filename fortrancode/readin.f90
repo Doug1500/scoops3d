@@ -179,8 +179,10 @@
 !
 !xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
         USE CommonData
-        USE GridData, ONLY: nx,ny,nz,delxy,zmin,delz,xll,yll,xcen,ycen,zcen,&
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!
+        USE GridData, ONLY: nx,ny,nz,delxy,zmin,delz,xll,yll,xcen,ycen,zcen,nci1,nci2,nci3,nci4,nci5,&
                            rad,angle,pi,zmax,demflag,zdem,lengthunits,xcenrot,ycenrot,zcenrot
+        !!!!!!!!!!!!!!!!!!!!!!!!!!
         USE MaterialData, ONLY: nmat,gsameall,gsameeach,gamw,eq,cee,tanphi,gamr,gamsurf,ru,&
                            thetares,thetasat,layer,minlayer,maxlayer,activelay,uwtlay,duwtlaydz,&
                            fxa,fxn,fxm,fxr,vga,vgn
@@ -267,6 +269,13 @@
         ycen = rnull
         zcen = rnull
         rad = rnull
+        !!!!!!!!!!!!!!!!!!!!!!!!
+        nci1 = rnull
+        nci2 = rnull
+        nci3 = rnull
+        nci4 = rnull
+        nci5 = rnull
+        !!!!!!!!!!!!!!!!!!!!!!!!
         angle = rnull
         isqout = 0
         str3d = 0
@@ -314,12 +323,14 @@
 
         DO
           PRINT *, 'Input file name?'
-          ! filin = "/home/yewintun/mygo/src/scoop3d/scoops3d/GA/write/test.scp"
-          filin = "test.scp"
-          ! ios = 0
+          
           ! READ (*,1000,IOSTAT=ios) filin
+          ! OPEN (12,STATUS = 'old',FILE = filin,IOSTAT=ios2)
+
+          filin = '/home/yewintun/mygo/src/scoops3d/test14.scp'        
           OPEN (12,STATUS = 'old',FILE = filin,IOSTAT=ios2)
           ios = 0
+
           IF (ios.eq.0.and.ios2.eq.0) EXIT
           n=n+1
           IF (n.gt.5) THEN
@@ -423,7 +434,7 @@
           IF (srch(1:6).eq.'single'.or.srch(1:6).eq.'SINGLE') THEN
 !       If single parameters                            
               READ (12,*)
-              READ(12,*,IOSTAT=ios2) xcen,ycen,zcen,rad,angle
+              READ(12,*,IOSTAT=ios2) xcen,ycen,zcen,rad,angle,nci1,nci2,nci3,nci4,nci5
               srch = 'single'
               single = 1
               ifos2d = 1  ! Always generate 2-D data with single option  

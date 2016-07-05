@@ -101,14 +101,14 @@
                   IF (ifailsurf.eq.1) THEN
                     IF (failsurf(i,j).eq.rnull) CYCLE  ! don't include colums with null failure surface.
                     IF (zmid(i,j).lt.failsurf(i,j).and.in(i,j).eq.4) THEN
-                      zbase = failsurf(i,j)
+                      zbase = failsurf(i,j)              
                     ELSE
                       zbase(1) = zb(i,j)
                       zbase(2) = zb(i+1,j)
                       zbase(3) = zb(i+1,j+1)
                       zbase(4) = zb(i,j+1)
                     END IF
-                  ELSE
+                  ELSE          
                     zbase(1) = zb(i,j)
                     zbase(2) = zb(i+1,j)
                     zbase(3) = zb(i+1,j+1)

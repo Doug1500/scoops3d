@@ -52,6 +52,7 @@
         REAL(pr), INTENT(inout) :: zbase(4),znodes(4),dx1,dx2,dy1,dy2
         REAL(pr) :: x1,x2,y1,y2,z1,z2
         INTEGER :: outnode1,outnode2
+     
 
         x1 = xdem(k,l)
         y1 = ydem(k,l)
@@ -61,8 +62,7 @@
         outnode2 = outnodes(k,l,2)
         
         nonode = 0
-
-
+ 
 !     If 2 column nodes are not intersected by search sphere calculate
 !     intersection of slip surface with DEM surface.
         IF (in(k,l).eq.2) THEN

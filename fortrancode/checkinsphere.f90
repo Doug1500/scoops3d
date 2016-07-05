@@ -28,7 +28,7 @@
 !xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
         USE CommonData
-        USE GridData, ONLY: delxy,xcen,ycen,zcen,radsq,zdemnodes
+        USE GridData, ONLY: delxy,xcen,ycen,zcen,radsq,zdemnodes,nci1,nci2,nci3,nci4,nci5
         USE SetData, ONLY: insphere,zb,xdem,ydem,omini,omaxi,ominj,omaxj
         
         IMPLICIT NONE
@@ -43,11 +43,22 @@
         xdiffsq = (x-xcen)*(x-xcen)
         ydiffsq = (y-ycen)*(y-ycen)
         mz2 = radsq-(xdiffsq+ydiffsq)  
-
 !     Check whether DEM node is intersected by sphere. mz2 will
 !     be less than zero if x or y of node is outside sphere.     
+        !********************************************************************
         IF (mz2 .gt. 0.0_pr) THEN
-          mz = sqrt(mz2)   
+          IF (jj.le.20) THEN
+            mz = sqrt(mz2) -  nci1
+          ELSE IF (jj.le.30) THEN
+            mz = sqrt(mz2) -  nci2
+          ELSE IF (jj.le.40) THEN
+            mz = sqrt(mz2) -  nci3
+          ELSE IF (jj.le.50) THEN
+            mz = sqrt(mz2) -  nci4
+          ELSE
+            mz = sqrt(mz2) -  nci5
+          END IF
+
 !     If DEM elevation is above bottom of sphere at x,y location
           IF (zdemnodes(ii,jj).ge.(zcen-mz)) THEN
 !     Mark case where elevation of the DEM surface is completely above the
@@ -59,7 +70,7 @@
             ELSE    
               insphere(ii,jj) = 1 
 !     Find elevation of slip surface.
-              zb(ii,jj) = zcen - mz
+              zb(ii,jj) = zcen - mz 
             END IF
 !     Keep track of min and max locations and total number 
 !     of all intersected nodes.           

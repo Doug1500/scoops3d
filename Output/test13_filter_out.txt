@@ -1,5 +1,0 @@
-This file contains data for trial slip surfaces filtered by absminma
- and nonconverging surfaces.
-Converging F are written here, but not used in search for minimum F.
-         xcen_m         ycen_m    zcen_m   radius_m   angle     minma     F_Bish      F_Ord
-         19.2297         24.1697    36.731    20.119   250.424  1.092E-05   111.000     3.331

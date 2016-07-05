@@ -70,8 +70,8 @@ MODULE GridData
   SAVE
   
   INTEGER :: nx,ny,nz,demflag
-  
-  REAL(pr) :: delxy,halfdelxy,xcen,ycen,zcen,zmin,delz
+  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  REAL(pr) :: delxy,halfdelxy,xcen,ycen,zcen,zmin,delz,nci1,nci2,nci3,nci4,nci5,rank
   REAL(pr) :: rad,radsq,angle,zmax,xll,yll
   REAL(pr) :: xcenrot,ycenrot,zcenrot,cellarea
   

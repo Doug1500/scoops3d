@@ -312,7 +312,8 @@
 !xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
         USE CommonData
-        USE GridData, ONLY: nx,ny,nz,delxy,xcen,ycen,zcen,zmin,rad,xll,yll,demflag,&
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        USE GridData, ONLY: nx,ny,nz,delxy,xcen,ycen,zcen,nci1,nci2,nci3,nci4,nci5,zmin,rad,xll,yll,demflag,&
                             radsq,zdem,xllcorner,yllcorner,lengthunits,&
                             halfdelxy,zdemnodes,nbdy
         USE MaterialData, ONLY: nmat,layer

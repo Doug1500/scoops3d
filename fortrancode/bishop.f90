@@ -206,7 +206,7 @@
 !xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
       USE CommonData
-      USE GridData, ONLY: delxy,xcen,ycen,zcen,angle,radsq,zdem,pi,halfdelxy,&
+      USE GridData, ONLY: delxy,xcen,ycen,zcen,angle,radsq,nci1,nci2,nci3,nci4,nci5,zdem,pi,halfdelxy,&
             zdemnodes,xcenrot,ycenrot,zcenrot,cellarea
       USE MaterialData, ONLY: nmat,gsameall,gsameeach,gamw,eq,layer,cee,tanphi,&
             gamr,ru,uwtlay,duwtlaydz,gamsurf,thetasat,thetares,&
@@ -423,7 +423,7 @@
 
 !    Find distance from column slip surface midpoint to sphere center.
           yrad = ymid-ycen
-          xrad = xmid-xcen      
+          xrad = xmid-xcen
     
             zz = radsq-xrad*xrad-yrad*yrad
             IF (zz.lt.0.0_pr) THEN
@@ -431,7 +431,20 @@
               CLOSE (33)
               Call WriteError(1,errmessage,problemtype,'no','no ',0,' ')     
             END IF            
-            zrad = SQRT(zz)
+            
+            IF (j.le.20) THEN
+              zrad = SQRT(zz) -  nci1
+            ELSE IF (j.le.30) THEN
+              zrad = SQRT(zz) -  nci2
+            ELSE IF (j.le.40) THEN
+              zrad = SQRT(zz) -  nci3
+            ELSE IF (j.le.50) THEN
+              zrad = SQRT(zz) -  nci4
+            ELSE
+              zrad = SQRT(zz) -  nci5
+            END IF
+            
+
             zmid(i,j) = zcen - zrad
             zmidbase = zmid(i,j)
           

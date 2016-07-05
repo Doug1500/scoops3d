@@ -49,7 +49,7 @@
 !      zz -- square of zrad
 !
 !xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
+        
         USE CommonData
         USE GridData, ONLY: nx,ny,xcen,ycen,zcen,rad,zdem,delxy,halfdelxy,radsq
         USE SetData, ONLY: omini,omaxi,ominj,omaxj,mini,minj,maxi,maxj,set,&
@@ -93,7 +93,7 @@
         nodecount = 0
         zavg = rnull
         goodset = 0
-
+        
 !    Calculate bounds so that the starting and ending columns always
 !    fall at least two columns outside of the search sphere "shadow"
 !    to initialize arrays adequately without initializing full array 
@@ -233,7 +233,7 @@
               END IF
                 
 !     Find circular slip base elevation at column center to compare to defined failure surface elevation
-!     in volume and FOS calculations.  The higher base elevation is used in calculations.                
+!     in volume and FOS calculations.  The higher base elevation is used in calculations.                       
               IF (ifailsurf.eq.1.and.in(i,j).eq.4) THEN        
                 xrad = xdem(i,j) + halfdelxy - xcen
                 yrad = ydem(i,j) + halfdelxy - ycen
@@ -245,10 +245,11 @@
 !     Find average elevation of set columns for radius adjustment. 
                 zavg(m) = zdem(i,j)+zavg(m)
                 zcount(m) = zcount(m) + 1
-              END IF    
+              END IF  
             END IF
           END DO
         END DO
+
 
 !    Determine if any good sets and complete average DEM distance calculation.          
         DO m = 1,nset

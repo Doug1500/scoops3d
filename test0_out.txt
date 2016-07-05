@@ -1,2 +1,0 @@
-*** ERROR reading DEM file                                                      
-    Details in "filename_errors_out.txt" 

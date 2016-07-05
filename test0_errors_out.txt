@@ -1,4 +1,0 @@
-*** ERROR - Scoops3D  execution terminated
-problem: error opening DEM file:                                                                                                 
-   X                                                                                                                                                                                                                           
-possible solution: check for existence of file with specified name and location                                                            

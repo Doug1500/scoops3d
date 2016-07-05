@@ -150,8 +150,8 @@ yF = []
 zF = []
 
 # grid size
-gdsx = 178
-gdsy = 149
+gdsx = 162
+gdsy = 142
 
 #cell size
 csix = 20.0
