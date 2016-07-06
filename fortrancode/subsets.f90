@@ -250,7 +250,6 @@
           END DO
         END DO
 
-
 !    Determine if any good sets and complete average DEM distance calculation.          
         DO m = 1,nset
           IF (setflag(m).eq.0) THEN 
@@ -260,10 +259,9 @@
             zavg(m) = zavg(m)/REAL(zcount(m),pr)
           END IF
         END DO
-          
+        PRINT *, goodset
 !    If include area is contained in one set and set does not contain boundary or truncated surface, then good set.         
         IF (iincflag.eq.1.and.incltot.eq.nincpt.and.allin.eq.0) allin = 1
-
         IF (single.eq.1) THEN
           IF (goodset.eq.0) THEN
             errmessage = 'no valid sets for single surface (contains boundary or truncated surface)'

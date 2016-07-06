@@ -19,9 +19,9 @@ func Partmain(x, y, z, R, alpha float64, mprank int, su, phi, gamma []float64, n
 	///////////////////////////////////////////////////////////////////SINGLE SOIL MATERIAL/////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	rank :=	strconv.Itoa(mprank)
-	FileName := "AraiTagyo"
-	ASCFile := "emb20DEM.asc"
-	material := "1   "+strconv.FormatFloat(su[0],'E',-1, 64)+"   "+strconv.FormatFloat(phi[0],'E',-1, 64)+"   "+strconv.FormatFloat(gamma[0],'E',-1, 64)
+	// FileName := "AraiTagyo"
+	// ASCFile := "emb20DEM.asc"
+	// material := "1   "+strconv.FormatFloat(su[0],'E',-1, 64)+"   "+strconv.FormatFloat(phi[0],'E',-1, 64)+"   "+strconv.FormatFloat(gamma[0],'E',-1, 64)
 	// material := "1   41.65   15   18.82"
 			 // tag	Cohesion phi gamma	
 	
@@ -46,22 +46,22 @@ func Partmain(x, y, z, R, alpha float64, mprank int, su, phi, gamma []float64, n
 	// ASCFile := "emb20DEM.asc"
 	// material := "1   "+strconv.FormatFloat(su[0],'E',-1, 64)+"   "+strconv.FormatFloat(phi[0],'E',-1, 64)+"   "+strconv.FormatFloat(gamma[0],'E',-1, 64)
 
-	d1 := []byte("title\nScoops3D example R; Mount Saint Helens\nlengthunits   ceeunits  gammaunits\nm   kPa   kN/m^3\nwater\nno\nnmat\n1\nlnum   cee   phi   gamt\n"+material+"\neq\n0\nmethod\nB\nsrch\nsingle\nxcen ycen zcen rad angle\n"+ strconv.FormatFloat(x,'E',-1, 64)+" " + strconv.FormatFloat(y,'E',-1, 64) +" "+ strconv.FormatFloat(z,'E',-1, 64)+" "+ strconv.FormatFloat(R,'E',-1, 64) +" "+ strconv.FormatFloat(alpha,'E',-1, 64) +" " + strconv.FormatFloat(nc1,'E',-1, 64) +" "+ strconv.FormatFloat(nc2,'E',-1, 64)+" "+ strconv.FormatFloat(nc3,'E',-1, 64) +" "+ strconv.FormatFloat(nc4,'E',-1, 64) +" "+ strconv.FormatFloat(nc5,'E',-1, 64) +"\nremove   foscut\nM   10.0\nisqout\n0\nirelfos\n0\nicritlattice\n0\nisubsurf zfrac\n0   1\nDEM file\n"+FileName+"/input/"+ASCFile+"\noutput directory\nOutput/")
+	// d1 := []byte("title\nScoops3D example R; Mount Saint Helens\nlengthunits   ceeunits  gammaunits\nm   kPa   kN/m^3\nwater\nno\nnmat\n1\nlnum   cee   phi   gamt\n"+material+"\neq\n0\nmethod\nB\nsrch\nsingle\nxcen ycen zcen rad angle\n"+ strconv.FormatFloat(x,'E',-1, 64)+" " + strconv.FormatFloat(y,'E',-1, 64) +" "+ strconv.FormatFloat(z,'E',-1, 64)+" "+ strconv.FormatFloat(R,'E',-1, 64) +" "+ strconv.FormatFloat(alpha,'E',-1, 64) +" " + strconv.FormatFloat(nc1,'E',-1, 64) +" "+ strconv.FormatFloat(nc2,'E',-1, 64)+" "+ strconv.FormatFloat(nc3,'E',-1, 64) +" "+ strconv.FormatFloat(nc4,'E',-1, 64) +" "+ strconv.FormatFloat(nc5,'E',-1, 64) +"\nremove   foscut\nM   10.0\nisqout\n0\nirelfos\n0\nicritlattice\n0\nisubsurf zfrac\n0   1\nDEM file\n"+FileName+"/input/"+ASCFile+"\noutput directory\nOutput/")
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////MULTIPLE MATERIAL/////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
-	// FileName := "AraiTagyo"
-	// ASCFile := "emb20DEM.asc"
-	
-	// material1 := "1   "+strconv.FormatFloat(su[0],'E',-1, 64)+"   "+strconv.FormatFloat(phi[0],'E',-1, 64)+"   "+strconv.FormatFloat(gamma[0],'E',-1, 64)
-	// material2 := "2   "+strconv.FormatFloat(su[1],'E',-1, 64)+"   "+strconv.FormatFloat(phi[1],'E',-1, 64)+"   "+strconv.FormatFloat(gamma[1],'E',-1, 64)
-	// material3 := "3   "+strconv.FormatFloat(su[2],'E',-1, 64)+"   "+strconv.FormatFloat(phi[2],'E',-1, 64)+"   "+strconv.FormatFloat(gamma[2],'E',-1, 64)
+	FileName := "AraiTagyo"
+	ASCFile := "emb20DEM.asc"
+	LayerFile := "emb20layer"	
+	material1 := "1   "+strconv.FormatFloat(su[0],'E',-1, 64)+"   "+strconv.FormatFloat(phi[0],'E',-1, 64)+"   "+strconv.FormatFloat(gamma[0],'E',-1, 64)
+	material2 := "2   "+strconv.FormatFloat(su[1],'E',-1, 64)+"   "+strconv.FormatFloat(phi[1],'E',-1, 64)+"   "+strconv.FormatFloat(gamma[1],'E',-1, 64)
+	material3 := "3   "+strconv.FormatFloat(su[2],'E',-1, 64)+"   "+strconv.FormatFloat(phi[2],'E',-1, 64)+"   "+strconv.FormatFloat(gamma[2],'E',-1, 64)
 
 	// material1 := "1   29.4   12   18.82"
 	// material2 := "2   9.8   5   18.82"
 	// material3 := "3   294   40   18.82" 
-	// LayerFile := "emb20layer"
+
 
 	// FileName := "DonaldGiam"
 	// ASCFile := "emb10DEM.asc"
@@ -75,8 +75,8 @@ func Partmain(x, y, z, R, alpha float64, mprank int, su, phi, gamma []float64, n
 	// material3 := "3   7.2   20   19.5" 
 	// LayerFile := "emb10layer"
 
-	// d1 := []byte("title\nScoops3D example R; Mount Saint Helens\nlengthunits   ceeunits  gammaunits\nm   kPa   kN/m^3\nwater\nno\nnmat\n3\nlnum   cee   phi   gamt\n"+material1+"\n"+material2+"\n"+material3+"\neq\n0\nmethod\nB\nsrch\nsingle\nxcen ycen zcen rad angle\n"+ strconv.FormatFloat(x,'E',-1, 64)+" " + strconv.FormatFloat(y,'E',-1, 64) +" "+ strconv.FormatFloat(z,'E',-1, 64)+" "+ strconv.FormatFloat(R,'E',-1, 64) +" "+ strconv.FormatFloat(alpha,'E',-1, 64) +"\nremove   foscut\nM   5.0\nisqout\n0\nirelfos\n0\nicritlattice\n0\nisubsurf zfrac\n0   1\nDEM file\n"+FileName+"/input/"+ASCFile+"\nlayer file\n"+FileName+"/input/"+LayerFile+"\noutput directory\nOutput/")
-
+	d1 := []byte("title\nScoops3D example R; Mount Saint Helens\nlengthunits   ceeunits  gammaunits\nm   kPa   kN/m^3\nwater\nno\nnmat\n3\nlnum   cee   phi   gamt\n"+material1+"\n"+material2+"\n"+material3+"\neq\n0\nmethod\nB\nsrch\nsingle\nxcen ycen zcen rad angle\n"+ strconv.FormatFloat(x,'E',-1, 64)+" " + strconv.FormatFloat(y,'E',-1, 64) +" "+ strconv.FormatFloat(z,'E',-1, 64)+" "+ strconv.FormatFloat(R,'E',-1, 64) +" "+ strconv.FormatFloat(alpha,'E',-1, 64) +" "+ strconv.FormatFloat(nc1,'E',-1, 64) +" "+ strconv.FormatFloat(nc2,'E',-1, 64)+" "+ strconv.FormatFloat(nc3,'E',-1, 64) +" "+ strconv.FormatFloat(nc4,'E',-1, 64) +" "+ strconv.FormatFloat(nc5,'E',-1, 64) +"\nremove   foscut\nM   5.0\nisqout\n0\nirelfos\n0\nicritlattice\n0\nisubsurf zfrac\n0   1\nDEM file\n"+FileName+"/input/"+ASCFile+"\nlayer file\n"+FileName+"/input/"+LayerFile+"\noutput directory\nOutput/")
+	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////3D MULTIPLE MATERIAL DATA////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
@@ -224,22 +224,36 @@ func SUM(slice []float64) float64 {
 }
 
 func SoilP() ([]float64, []float64, []float64, []float64, []float64, []float64, []float64) {
-	// ////////////////////////////////////////////////////////////////////////////
-	// ///////////////////////////////AriaTagyo////////////////////////////////////
-	// ////////////////////////////////////////////////////////////////////////////
-	sukmean := []float64{41.65, 41.65, 41.65}
-	phikmean:= []float64{15.0, 15.0, 15.0}
+	// // // ////////////////////////////////////////////////////////////////////////////
+	// // // ///////////////////////////////AriaTagyo////////////////////////////////////
+	// // // ////////////////////////////////////////////////////////////////////////////
+	// sukmean := []float64{41.65, 41.65, 41.65}
+	// phikmean:= []float64{15.0, 15.0, 15.0}
+	// gamma 	:= []float64{18.82, 18.82, 18.82}
+
+	// suksd := []float64{8.0, 0.0, 0.0}
+	// phiksd:= []float64{3.0, 0.0, 0.0}
+	
+	// su11 := []float64{41.65, 41.65, 41.65}
+	// phi11:= []float64{15.0, 15.0, 15.0}
+
+	//////////////////////////////////////////////////////////////////////////
+	/////////////////////////////AT Multiplelayer//////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////
+	sukmean := []float64{29.4, 9.8, 294.0}
+	phikmean:= []float64{12.0, 5.0, 40.0}
 	gamma 	:= []float64{18.82, 18.82, 18.82}
 
-	suksd := []float64{8.0, 0.0, 0.0}
-	phiksd:= []float64{3.0, 0.0, 0.0}
+	suksd := []float64{29.4, 9.8, 294.0}
+	phiksd:= []float64{12.0, 5.0, 40.0}
 	
-	su11 := []float64{41.65, 41.65, 41.65}
-	phi11:= []float64{15.0, 15.0, 15.0}
+	su11 := []float64{29.4, 9.8, 294.0}
+	phi11:= []float64{12.0, 5.0, 40.0}
 
-	// ////////////////////////////////////////////////////////////////////////////
-	// ///////////////////////////////Donald&Giam//////////////////////////////////
-	// ////////////////////////////////////////////////////////////////////////////
+
+	// //////////////////////////////////////////////////////////////////////////
+	// /////////////////////////////Donald&Giam//////////////////////////////////
+	// //////////////////////////////////////////////////////////////////////////
 	// sukmean := []float64{0.0, 5.3, 7.2}
 	// phikmean:= []float64{38.0, 23.0, 20.0}
 	// gamma 	:= []float64{19.5, 19.5, 19.5}

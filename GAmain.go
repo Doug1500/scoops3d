@@ -461,16 +461,6 @@ func main() {
 		x, y, z, R, alpha, nc1, nc2, nc3, nc4, nc5 := I[0], I[1], I[2], I[3], I[4], I[5], I[6], I[7], I[8], I[9]		
 
 		// nc1, nc2, nc3, nc4, nc5	= 0.0, 0.0, 0.0, 0.0, 0.0
-		// ///////////////////////////////////////////////////////////////////////////////////////////////////
-		// /////////////////////// CASE STDUY 2 DONALD AND GIAM /////////////////////////////////////////////
-		// ///////////////////////////////////////////////////////////////////////////////////////////////////
-		// x, y, z, R, alpha, th1, th2, th3, th4, RI := I[0], I[1], I[2], I[3], I[4], I[5], I[6], I[7], I[8], I[9]
-
-		// phi11[2] = phikmean[2] + phiksd[2]*RI*math.Cos(th1)*math.Cos(th2)*math.Cos(th3)*math.Cos(th4)
-		// phi11[1] = phikmean[1] + phiksd[1]*RI*math.Cos(th1)*math.Cos(th2)*math.Cos(th3)*math.Sin(th4)
-		// phi11[0] = phikmean[0] + phiksd[0]*RI*math.Cos(th1)*math.Cos(th2)*math.Sin(th3)
-		// su11[2] = sukmean[2] + suksd[2]*RI*math.Cos(th1)*math.Sin(th2)
-		// su11[1] = sukmean[1] + suksd[1]*RI*math.Sin(th1)
 
 		FOSS, _, err = Part.Partmain(x, y, z, R, alpha, mpi.Rank(), su11, phi11, gamma, nc1, nc2, nc3, nc4, nc5)
 		// FOSS, _, err = Part.Partmain(x, y, z, R, alpha, su11, phi11, gamma, nc1, nc2, nc3, nc4, nc5)
@@ -507,7 +497,7 @@ func main() {
 	// err := d.Init([]float64{0.0, 0.0}, []float64{6.3, 5.0}) //Creating the grid for possible answers
 
 	// DonaldGiam
-	// err := d.Init([]float64{0.0, 0.0, 0.0, 0.0, 0.0, -1.5, -1.5, -1.5, 0.0, 0.0}, []float64{60.0, 60.0, 100.0, 100.0, 360.0, 1.5, 1.5, 1.5, 6.2857, 5.0}) //Creating the grid for possible answers
+	// err := d.Init([]float64{0.0, 0.0, 25.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0}, []float64{60.0, 60.0, 100.0, 100.0, 360.0, 5.0, 5.0, 5.0, 5.0, 5.0}) //Creating the grid for possible answers
 
 	//Mount StHelen
 	// err := d.Init([]float64{557974.631687, 5111446.1291019, 1000.0, 0.0, 0.0}, []float64{568974.631687, 5122446.1291019, 4000.0, 5000.0, 180.0}) //Creating the grid for possible answers

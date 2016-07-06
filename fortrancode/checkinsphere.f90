@@ -47,16 +47,28 @@
 !     be less than zero if x or y of node is outside sphere.     
         !********************************************************************
         IF (mz2 .gt. 0.0_pr) THEN
-          IF (jj.le.20) THEN
-            mz = sqrt(mz2) -  nci1
+          ! IF (jj.le.20) THEN
+          !   mz = sqrt(mz2) -  nci1
+          ! ELSE IF (jj.le.30) THEN
+          !   mz = sqrt(mz2) -  nci2
+          ! ELSE IF (jj.le.40) THEN
+          !   mz = sqrt(mz2) -  nci3
+          ! ELSE IF (jj.le.50) THEN
+          !   mz = sqrt(mz2) -  nci4
+          ! ELSE
+          !   mz = sqrt(mz2) -  nci5
+          ! END IF
+
+          IF (jj.le.10) THEN
+            mz = sqrt(mz2) +  nci1
+          ELSE IF (jj.le.20) THEN
+            mz = sqrt(mz2) +  nci2
+          ELSE IF (jj.le.25) THEN
+            mz = sqrt(mz2) +  nci3
           ELSE IF (jj.le.30) THEN
-            mz = sqrt(mz2) -  nci2
-          ELSE IF (jj.le.40) THEN
-            mz = sqrt(mz2) -  nci3
-          ELSE IF (jj.le.50) THEN
-            mz = sqrt(mz2) -  nci4
+            mz = sqrt(mz2) +  nci4
           ELSE
-            mz = sqrt(mz2) -  nci5
+            mz = sqrt(mz2) +  nci5
           END IF
 
 !     If DEM elevation is above bottom of sphere at x,y location

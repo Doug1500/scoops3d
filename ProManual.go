@@ -113,9 +113,10 @@ func main() {
 
 	var x, y, z, R, alpha, nc1, nc2, nc3, nc4, nc5 float64
 	fmt.Scan(&x, &y, &z, &R, &alpha, &nc1, &nc2, &nc3, &nc4, &nc5 )	
+	nc1, nc2, nc3, nc4, nc5	= 0.0, 0.0, 0.0, 0.0, 0.0
 		
 	// FOSS, score2, err = Part.Partmain(x, y, z, R, alpha, mpi.Rank(), su11, phi11, gamma)
-	score, _, err := Part.Partmain(x, y, z, R, alpha, 0, su11, phi11, gamma, nc1, nc2, nc3, nc4, nc5)
+	score, _, err := Part.Partmain(x, y, z, R, alpha, 16, su11, phi11, gamma, nc1, nc2, nc3, nc4, nc5)
 	
 	fmt.Println(score, err)
 
