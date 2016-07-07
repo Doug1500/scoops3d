@@ -460,6 +460,7 @@ func main() {
 		///////////////////////////////////////////////////////////////////////////////////////////////////
 		x, y, z, R, alpha, nc1, nc2, nc3, nc4, nc5 := I[0], I[1], I[2], I[3], I[4], I[5], I[6], I[7], I[8], I[9]		
 
+		x, y, z, R, alpha = 30.3327, 42.5189, 49.9641, 27.4382, 184.474
 		// nc1, nc2, nc3, nc4, nc5	= 0.0, 0.0, 0.0, 0.0, 0.0
 
 		FOSS, _, err = Part.Partmain(x, y, z, R, alpha, mpi.Rank(), su11, phi11, gamma, nc1, nc2, nc3, nc4, nc5)
@@ -490,7 +491,7 @@ func main() {
 	var d sgal.Data
 
 	// //AriaTagyo
-	err := d.Init([]float64{0.0, 0.0, 16.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0}, []float64{60.0, 60.0, 100.0, 60.0, 360.0, 5.0, 5.0, 5.0, 5.0, 5.0}) //Creating the grid for possible answers
+	err := d.Init([]float64{0.0, 0.0, 16.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0}, []float64{60.0, 60.0, 100.0, 60.0, 360.0, 10.0, 10.0, 10.0, 10.0, 10.0}) //Creating the grid for possible answers
 
 	//Cone
 	// err := d.Init([]float64{-6000.0, -6000.0, 0.0, 0.0, 0.0, 0.0, 0.0}, []float64{10000.0, 4000.0, 2000.0, 2000.0, 360.0, 6.3, 5.0}) //Creating the grid for possible answers

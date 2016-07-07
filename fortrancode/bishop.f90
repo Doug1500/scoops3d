@@ -433,28 +433,40 @@
             END IF            
             
             ! IF (j.le.20) THEN
-            !   zrad = SQRT(zz) -  nci1
+            !   zrad = SQRT(zz) +  nci1
             ! ELSE IF (j.le.30) THEN
-            !   zrad = SQRT(zz) -  nci2
+            !   zrad = SQRT(zz) +  nci2
             ! ELSE IF (j.le.40) THEN
-            !   zrad = SQRT(zz) -  nci3
+            !   zrad = SQRT(zz) +  nci3
             ! ELSE IF (j.le.50) THEN
-            !   zrad = SQRT(zz) -  nci4
+            !   zrad = SQRT(zz) +  nci4
             ! ELSE
-            !   zrad = SQRT(zz) -  nci5
+            !   zrad = SQRT(zz) +  nci5
             ! END IF
-            
-            IF (j.le.10) THEN
-              zrad = SQRT(zz) +  nci1
-            ELSE IF (j.le.20) THEN
-              zrad = SQRT(zz) +  nci2
-            ELSE IF (j.le.25) THEN
-              zrad = SQRT(zz) +  nci3
-            ELSE IF (j.le.30) THEN
-              zrad = SQRT(zz) +  nci4
+
+            IF (j.le.35) THEN
+              zrad = SQRT(zz) -  nci1
+            ELSE IF (j.le.40) THEN
+              zrad = SQRT(zz) -  nci2
+            ELSE IF (j.le.45) THEN
+              zrad = SQRT(zz) -  nci3
+            ELSE IF (j.le.50) THEN
+              zrad = SQRT(zz) -  nci4
             ELSE
-              zrad = SQRT(zz) +  nci5
+              zrad = SQRT(zz) -  nci5
             END IF
+            
+            ! IF (j.le.10) THEN
+            !   zrad = SQRT(zz) +  nci1
+            ! ELSE IF (j.le.20) THEN
+            !   zrad = SQRT(zz) +  nci2
+            ! ELSE IF (j.le.25) THEN
+            !   zrad = SQRT(zz) +  nci3
+            ! ELSE IF (j.le.30) THEN
+            !   zrad = SQRT(zz) +  nci4
+            ! ELSE
+            !   zrad = SQRT(zz) +  nci5
+            ! END IF
 
             zmid(i,j) = zcen - zrad
             zmidbase = zmid(i,j)
