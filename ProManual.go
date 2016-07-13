@@ -111,9 +111,10 @@ func main() {
 	//////////////////////////////////////MATERIAL PROPERTIES//////////////////////////////////////////////
 	_, _, _, _, gamma, su11, phi11 := Part.SoilP()
 
-	var x, y, z, R, alpha, nc1, nc2, nc3, nc4, nc5 float64
-	fmt.Scan(&x, &y, &z, &R, &alpha, &nc1, &nc2, &nc3, &nc4, &nc5 )	
-	x, y, z, R, alpha = 30.3327, 42.5189, 49.9641, 27.4382, 184.474
+	// var x, y, z, R, alpha, nc1, nc2, nc3, nc4, nc5 float64
+	// fmt.Scan(&x, &y, &z, &R, &alpha, &nc1, &nc2, &nc3, &nc4, &nc5 )	
+	x, y, z, R, alpha := 26.9625, 49.65, 54.395, 32.7162, 181.084
+	nc1, nc2, nc3, nc4, nc5	:= 0.0, 0.0, 0.0, 0.0, 0.0
 	// nc1, nc2, nc3, nc4, nc5	= 0.0, 0.0, 0.0, 0.0, 0.0
 		
 	// FOSS, score2, err = Part.Partmain(x, y, z, R, alpha, mpi.Rank(), su11, phi11, gamma)

@@ -17,9 +17,9 @@ B
 srch
 single
 xcen ycen zcen rad angle
-3.03327E+01 4.25189E+01 4.99641E+01 2.74382E+01 1.84474E+02 0E+00 0E+00 0E+00 0E+00 0E+00
+2.69625E+01 4.965E+01 5.4395E+01 3.27162E+01 1.81084E+02 0E+00 0E+00 0E+00 0E+00 0E+00
 remove   foscut
-M   20.0
+M   102.0
 isqout
 0
 irelfos

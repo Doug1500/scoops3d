@@ -47,41 +47,18 @@
 !     be less than zero if x or y of node is outside sphere.     
         !********************************************************************
         IF (mz2 .gt. 0.0_pr) THEN
-          ! IF (jj.le.20) THEN
-          !   mz = sqrt(mz2) +  nci1
-          ! ELSE IF (jj.le.30) THEN
-          !   mz = sqrt(mz2) +  nci2
-          ! ELSE IF (jj.le.40) THEN
-          !   mz = sqrt(mz2) +  nci3
-          ! ELSE IF (jj.le.50) THEN
-          !   mz = sqrt(mz2) +  nci4
-          ! ELSE
-          !   mz = sqrt(mz2) +  nci5
-          ! END IF
-
-          IF (jj.le.35) THEN
-            mz = sqrt(mz2) -  nci1
-          ELSE IF (jj.le.40) THEN
-            mz = sqrt(mz2) -  nci2
-          ELSE IF (jj.le.45) THEN
-            mz = sqrt(mz2) -  nci3
-          ELSE IF (jj.le.50) THEN
-            mz = sqrt(mz2) -  nci4
+          IF (ii.le.67) THEN
+            mz = sqrt(mz2) -  1.0
+          ELSE IF (ii.ge.67 .and. ii.le.76) THEN
+            mz = sqrt(mz2) -  1.0
+          ELSE IF (ii.ge.76 .and. ii.le.86) THEN
+            mz = sqrt(mz2) -  3.0
+          ELSE IF (ii.ge.86 .and. ii.le.95) THEN
+            mz = sqrt(mz2) -  3.0
           ELSE
-            mz = sqrt(mz2) -  nci5
+            mz = sqrt(mz2) -  3.0
           END IF
-
-          ! IF (jj.le.10) THEN
-          !   mz = sqrt(mz2) +  nci1
-          ! ELSE IF (jj.le.20) THEN
-          !   mz = sqrt(mz2) +  nci2
-          ! ELSE IF (jj.le.25) THEN
-          !   mz = sqrt(mz2) +  nci3
-          ! ELSE IF (jj.le.30) THEN
-          !   mz = sqrt(mz2) +  nci4
-          ! ELSE
-          !   mz = sqrt(mz2) +  nci5
-          ! END IF
+      
 
 !     If DEM elevation is above bottom of sphere at x,y location
           IF (zdemnodes(ii,jj).ge.(zcen-mz)) THEN

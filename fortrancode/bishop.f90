@@ -424,49 +424,27 @@
 !    Find distance from column slip surface midpoint to sphere center.
           yrad = ymid-ycen
           xrad = xmid-xcen
-    
+
             zz = radsq-xrad*xrad-yrad*yrad
             IF (zz.lt.0.0_pr) THEN
               errmessage = 'cannot calculate column midpoint'
               CLOSE (33)
               Call WriteError(1,errmessage,problemtype,'no','no ',0,' ')     
-            END IF            
-            
-            ! IF (j.le.20) THEN
-            !   zrad = SQRT(zz) +  nci1
-            ! ELSE IF (j.le.30) THEN
-            !   zrad = SQRT(zz) +  nci2
-            ! ELSE IF (j.le.40) THEN
-            !   zrad = SQRT(zz) +  nci3
-            ! ELSE IF (j.le.50) THEN
-            !   zrad = SQRT(zz) +  nci4
-            ! ELSE
-            !   zrad = SQRT(zz) +  nci5
-            ! END IF
+            END IF         
+        
 
-            IF (j.le.35) THEN
-              zrad = SQRT(zz) -  nci1
-            ELSE IF (j.le.40) THEN
-              zrad = SQRT(zz) -  nci2
-            ELSE IF (j.le.45) THEN
-              zrad = SQRT(zz) -  nci3
-            ELSE IF (j.le.50) THEN
-              zrad = SQRT(zz) -  nci4
+            IF (i.le.67) THEN
+              zrad = SQRT(zz) -  1.0
+            ELSE IF (i.ge.67 .and. i.le.76) THEN
+              zrad = SQRT(zz) -  1.0
+            ELSE IF (i.ge.76 .and. i.le.86) THEN
+              zrad = SQRT(zz) -  3.0
+            ELSE IF (i.ge.86 .and. i.le.95) THEN
+              zrad = SQRT(zz) -  3.0
             ELSE
-              zrad = SQRT(zz) -  nci5
+              
+              zrad = SQRT(zz) -  3.0
             END IF
-            
-            ! IF (j.le.10) THEN
-            !   zrad = SQRT(zz) +  nci1
-            ! ELSE IF (j.le.20) THEN
-            !   zrad = SQRT(zz) +  nci2
-            ! ELSE IF (j.le.25) THEN
-            !   zrad = SQRT(zz) +  nci3
-            ! ELSE IF (j.le.30) THEN
-            !   zrad = SQRT(zz) +  nci4
-            ! ELSE
-            !   zrad = SQRT(zz) +  nci5
-            ! END IF
 
             zmid(i,j) = zcen - zrad
             zmidbase = zmid(i,j)

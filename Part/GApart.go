@@ -75,7 +75,7 @@ func Partmain(x, y, z, R, alpha float64, mprank int, su, phi, gamma []float64, n
 	// material3 := "3   7.2   20   19.5" 
 	// LayerFile := "emb10layer"
 
-	d1 := []byte("title\nScoops3D example R; Mount Saint Helens\nlengthunits   ceeunits  gammaunits\nm   kPa   kN/m^3\nwater\nno\nnmat\n3\nlnum   cee   phi   gamt\n"+material1+"\n"+material2+"\n"+material3+"\neq\n0\nmethod\nB\nsrch\nsingle\nxcen ycen zcen rad angle\n"+ strconv.FormatFloat(x,'E',-1, 64)+" " + strconv.FormatFloat(y,'E',-1, 64) +" "+ strconv.FormatFloat(z,'E',-1, 64)+" "+ strconv.FormatFloat(R,'E',-1, 64) +" "+ strconv.FormatFloat(alpha,'E',-1, 64) +" "+ strconv.FormatFloat(nc1,'E',-1, 64) +" "+ strconv.FormatFloat(nc2,'E',-1, 64)+" "+ strconv.FormatFloat(nc3,'E',-1, 64) +" "+ strconv.FormatFloat(nc4,'E',-1, 64) +" "+ strconv.FormatFloat(nc5,'E',-1, 64) +"\nremove   foscut\nM   20.0\nisqout\n0\nirelfos\n0\nicritlattice\n0\nisubsurf zfrac\n0   1\nDEM file\n"+FileName+"/input/"+ASCFile+"\nlayer file\n"+FileName+"/input/"+LayerFile+"\noutput directory\nOutput/")
+	d1 := []byte("title\nScoops3D example R; Mount Saint Helens\nlengthunits   ceeunits  gammaunits\nm   kPa   kN/m^3\nwater\nno\nnmat\n3\nlnum   cee   phi   gamt\n"+material1+"\n"+material2+"\n"+material3+"\neq\n0\nmethod\nB\nsrch\nsingle\nxcen ycen zcen rad angle\n"+ strconv.FormatFloat(x,'E',-1, 64)+" " + strconv.FormatFloat(y,'E',-1, 64) +" "+ strconv.FormatFloat(z,'E',-1, 64)+" "+ strconv.FormatFloat(R,'E',-1, 64) +" "+ strconv.FormatFloat(alpha,'E',-1, 64) +" "+ strconv.FormatFloat(nc1,'E',-1, 64) +" "+ strconv.FormatFloat(nc2,'E',-1, 64)+" "+ strconv.FormatFloat(nc3,'E',-1, 64) +" "+ strconv.FormatFloat(nc4,'E',-1, 64) +" "+ strconv.FormatFloat(nc5,'E',-1, 64) +"\nremove   foscut\nM   102.0\nisqout\n0\nirelfos\n0\nicritlattice\n0\nisubsurf zfrac\n0   1\nDEM file\n"+FileName+"/input/"+ASCFile+"\nlayer file\n"+FileName+"/input/"+LayerFile+"\noutput directory\nOutput/")
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////3D MULTIPLE MATERIAL DATA////////////////////////////////////////////////////////////////////////
@@ -178,7 +178,7 @@ func Partmain(x, y, z, R, alpha float64, mprank int, su, phi, gamma []float64, n
 		score2, _ =(strconv.ParseFloat(important5[3], 64))
 		// fmt.Println(score2)
 		if score2 == 0.0{
-			score2 = 1000.0
+			score2 = 10.0
 		}
 	}
 

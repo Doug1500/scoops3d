@@ -1,0 +1,42 @@
+title
+Scoops3D example E (Arai and Tagyo 1985 example3) homogeneous w/ 3D pressure head file   
+lengthunits   ceeunits  gammaunits
+m   kPa   kN/m^3   
+water  gamw
+3d   9.81   
+nmat
+1   
+lnum   cee   phi   gamps   gams
+1   41.65   15   18.82   18.82   
+eq
+0   
+method 
+B   
+srch
+box   
+ismin   jsmin   ismax   jsmax   nsrchres
+40   67   80   67   1   
+zsmin   zsmax   zsrchres
+35   55   0.5   
+irefine   multres   fostol
+1   4   0.01   
+dr   deginc   degmax   numdir
+.5   0   0   1   
+vacriterion   armin   armax   vmin   vmax   tol   limcol
+V   0   0   1e4   1e5   1000.0   100   
+remove   foscut
+M   10   
+isqout
+0   
+irelfos
+0   
+icritlattice
+0   
+isubsurf zfrac
+0   1   
+DEM file
+input/emb20DEM.asc   
+pressure head file
+input/emb20phead3D.txt   
+output directory
+E_emb20wet3D_output/   
