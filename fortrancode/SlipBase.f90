@@ -48,7 +48,7 @@
 !xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
  
       USE CommonData
-      USE GridData, ONLY: delxy,xcen,ycen,zcen,radsq,zdemnodes,zdem,halfdelxy
+      USE GridData, ONLY: delxy,xcen,ycen,zcen,radsq,nci1,nci2,nci3,nci4,nci5,zdemnodes,zdem,halfdelxy
       USE SetData, ONLY: subset,zb,insphere,in,xdem,ydem,zmid,outnodes
       USE FailSurfData, ONLY: ifailsurf,failsurf      
               
@@ -176,9 +176,35 @@
               errmessage = 'cannot calculate distance from column slip surface midpoint to search node'
               Call WriteError(1,errmessage,problemtype,'no','no ',0,' ')              
 !              Print *,radsq,xrad,yrad,zz
-            END IF    
+            END IF                
+            ! IF (i.le.85.5) THEN
+            !   zrad = SQRT(zz) -  nci1
+            ! ELSE IF (i.ge.85.5 .and. i.le.89.3) THEN
+            !   zrad = SQRT(zz) -  nci2
+            ! ELSE IF (i.ge.89.3 .and. i.le.93.1) THEN
+            !   zrad = SQRT(zz) -  nci3
+            ! ELSE IF (i.ge.93.1 .and. i.le.96.9) THEN
+            !   zrad = SQRT(zz) -  nci4
+            ! ELSE IF (i.ge.96.9 .and. i.le.100.7) THEN
+            !   zrad = SQRT(zz) -  nci5
+            ! END IF
             zrad = SQRT(zz)
-            zmid(i,j) = zcen - zrad
+            ! IF (i.ge.85.5) THEN
+            !  zmid(i,j) = zcen - zrad - 5.0
+            ! ELSE
+             ! zmid(i,j) = zcen - zrad
+            ! END IF
+            IF (i.le.85.5) THEN
+              zmid(i,j) = zcen - zrad -  nci1
+            ELSE IF (i.ge.85.5 .and. i.le.89.3) THEN
+              zmid(i,j) = zcen - zrad -  nci2
+            ELSE IF (i.ge.89.3 .and. i.le.93.1) THEN
+              zmid(i,j) = zcen - zrad -  nci3
+            ELSE IF (i.ge.93.1 .and. i.le.96.9) THEN
+              zmid(i,j) = zcen - zrad -  nci4
+            ELSE
+              zmid(i,j) = zcen - zrad -  nci5
+            END IF
           END IF
           IF (zmid(i,j).gt.zdem(i,j)) zmid(i,j) = zdem(i,j)
         END DO

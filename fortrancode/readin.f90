@@ -324,12 +324,12 @@
         DO
           PRINT *, 'Input file name?'
           
-          READ (*,1000,IOSTAT=ios) filin
-          OPEN (12,STATUS = 'old',FILE = filin,IOSTAT=ios2)
-
-          ! filin = '/home/yewintun/mygo/src/scoops3d/test16.scp'        
+          ! READ (*,1000,IOSTAT=ios) filin
           ! OPEN (12,STATUS = 'old',FILE = filin,IOSTAT=ios2)
-          ! ios = 0
+
+          filin = '/home/yewintun/mygo/src/scoops3d/test16.scp'        
+          OPEN (12,STATUS = 'old',FILE = filin,IOSTAT=ios2)
+          ios = 0
 
           IF (ios.eq.0.and.ios2.eq.0) EXIT
           n=n+1

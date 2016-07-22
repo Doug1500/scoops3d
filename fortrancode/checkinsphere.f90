@@ -47,17 +47,8 @@
 !     be less than zero if x or y of node is outside sphere.     
         !********************************************************************
         IF (mz2 .gt. 0.0_pr) THEN
-          IF (ii.le.67) THEN
-            mz = sqrt(mz2) -  1.0
-          ELSE IF (ii.ge.67 .and. ii.le.76) THEN
-            mz = sqrt(mz2) -  1.0
-          ELSE IF (ii.ge.76 .and. ii.le.86) THEN
-            mz = sqrt(mz2) -  3.0
-          ELSE IF (ii.ge.86 .and. ii.le.95) THEN
-            mz = sqrt(mz2) -  3.0
-          ELSE
-            mz = sqrt(mz2) -  3.0
-          END IF
+          mz = sqrt(mz2)
+          
       
 
 !     If DEM elevation is above bottom of sphere at x,y location
@@ -71,7 +62,34 @@
             ELSE    
               insphere(ii,jj) = 1 
 !     Find elevation of slip surface.
-              zb(ii,jj) = zcen - mz 
+              ! IF (ii.le.85.5) THEN
+              !   mz = sqrt(mz2) -  nci1
+              ! ELSE IF (ii.ge.85.5 .and. ii.le.89.3) THEN
+              !   mz = sqrt(mz2) -  nci2
+              ! ELSE IF (ii.ge.89.3 .and. ii.le.93.1) THEN
+              !   mz = sqrt(mz2) -  nci3
+              ! ELSE IF (ii.ge.93.1 .and. ii.le.96.9) THEN
+              !   mz = sqrt(mz2) -  nci4
+              ! ELSE IF (ii.ge.96.9 .and. ii.le.100.7) THEN
+              !   mz = sqrt(mz2) -  nci5
+              ! END IF
+              mz = sqrt(mz2)
+              ! IF (ii.ge.85.5) THEN
+              !   zb(ii,jj) = zcen - mz - 5.0
+              ! ELSE
+              !   zb(ii,jj) = zcen - mz
+              ! END IF
+              IF (ii.le.85.5) THEN
+                zb(ii,jj) = zcen - mz -  nci1
+              ELSE IF (ii.ge.85.5 .and. ii.le.89.3) THEN
+                zb(ii,jj) = zcen - mz -  nci2
+              ELSE IF (ii.ge.89.3 .and. ii.le.93.1) THEN
+                zb(ii,jj) = zcen - mz -  nci3
+              ELSE IF (ii.ge.93.1 .and. ii.le.96.9) THEN
+                zb(ii,jj) = zcen - mz -  nci4
+              ELSE
+                zb(ii,jj) = zcen - mz -  nci5
+              END IF
             END IF
 !     Keep track of min and max locations and total number 
 !     of all intersected nodes.           

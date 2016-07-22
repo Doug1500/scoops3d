@@ -460,8 +460,8 @@ func main() {
 		///////////////////////////////////////////////////////////////////////////////////////////////////
 		x, y, z, R, alpha, nc1, nc2, nc3, nc4, nc5 := I[0], I[1], I[2], I[3], I[4], I[5], I[6], I[7], I[8], I[9]		
 
-		// x, y, z, R, alpha = 30.3327, 42.5189, 49.9641, 27.4382, 184.474
-		nc1, nc2, nc3, nc4, nc5	= 0.0, 0.0, 0.0, 0.0, 0.0
+		// x, y, z, R, alpha = 26.9625, 49.65, 54.395, 32.7162, 181.084
+		// nc1, nc2, nc3, nc4, nc5	= 0.0, 0.0, 0.0, 0.0, 0.0
 
 		FOSS, score2, err = Part.Partmain(x, y, z, R, alpha, mpi.Rank(), su11, phi11, gamma, nc1, nc2, nc3, nc4, nc5)
 		// FOSS, _, err = Part.Partmain(x, y, z, R, alpha, su11, phi11, gamma, nc1, nc2, nc3, nc4, nc5)
@@ -472,10 +472,14 @@ func main() {
 			score = 10000.0
 		}
 			
-		if alpha > 360.0 || score2 < 800.0 {
+		// if alpha > 360.0 || score2 < 1000.0 {
+		// 	err = true
+		// }
+
+		if alpha > 360.0 || score2 < 1000.0 {
 			err = true
 		}
-
+		
 		if err {
 			oor = 1 // => out of range
 		}

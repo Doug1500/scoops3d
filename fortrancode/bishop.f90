@@ -431,22 +431,25 @@
               CLOSE (33)
               Call WriteError(1,errmessage,problemtype,'no','no ',0,' ')     
             END IF         
-        
 
-            IF (i.le.67) THEN
-              zrad = SQRT(zz) -  1.0
-            ELSE IF (i.ge.67 .and. i.le.76) THEN
-              zrad = SQRT(zz) -  1.0
-            ELSE IF (i.ge.76 .and. i.le.86) THEN
-              zrad = SQRT(zz) -  3.0
-            ELSE IF (i.ge.86 .and. i.le.95) THEN
-              zrad = SQRT(zz) -  3.0
+            zrad = SQRT(zz)
+            ! IF (i.ge.85.5) THEN
+            !   zmid(i,j) = zcen - zrad - 5.0
+            ! ELSE
+            !   zmid(i,j) = zcen - zrad
+            ! END IF
+            IF (i.le.85.5) THEN
+              zmid(i,j) = zcen - zrad -  nci1
+            ELSE IF (i.ge.85.5 .and. i.le.89.3) THEN
+              zmid(i,j) = zcen - zrad -  nci2
+            ELSE IF (i.ge.89.3 .and. i.le.93.1) THEN
+              zmid(i,j) = zcen - zrad -  nci3
+            ELSE IF (i.ge.93.1 .and. i.le.96.9) THEN
+              zmid(i,j) = zcen - zrad -  nci4
             ELSE
-              
-              zrad = SQRT(zz) -  3.0
+              zmid(i,j) = zcen - zrad -  nci5
             END IF
 
-            zmid(i,j) = zcen - zrad
             zmidbase = zmid(i,j)
           
             IF (zmidbase.ge.ztop) CYCLE

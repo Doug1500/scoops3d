@@ -8,14 +8,14 @@
 
 This file: Output/test16_out.txt                                                                                                                                                                                                       
 
-Start date and time: 07/13/2016  13:39:10
+Start date and time: 07/20/2016  15:38:35
 Description: Scoops3D example R; Mount Saint Helens                                                                                  
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 I. INPUT FILES:
   DEM file: AraiTagyo/input/emb20DEM.asc                                                                                                                                                                                                
   Material layer file: AraiTagyo/input/emb20layer                                                                                                                                                                                                  
-  Main parameter input file: test16.scp                                                                                                                                                                                              
+  Main parameter input file: /home/yewintun/mygo/src/scoops3d/test16.scp                                                                                                                                                             
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 II. SIMULATION PARAMETERS:
@@ -65,9 +65,9 @@ Analysis method (method):                                               Bishop
 ------------
 SEARCH METHOD (srch)                                                    single
          xcen(m )        ycen(m )   zcen(m )  radius(m )
-         26.9625         49.6500   54.3950    32.71620
+         36.6157         34.1111   47.4119    24.79610
 
-Slip direction, relative to lattice,                                  181.0840
+Slip direction, relative to lattice,                                  178.8960
 ------------
 ADDITIONAL OUTPUT FILES AND PARAMETERS
 Create new DEM file (remove):                                                M
@@ -85,9 +85,9 @@ III. OUTPUT FILES GENERATED:
       test16_slope_out.asc
         Range: [    0.0000,   33.6901]
       test16_fos3d_out.asc
-        Range: [    2.4208,    2.4208]
+        Range: [    0.7847,    0.7847]
       test16_ordfos3d_out.asc
-        Range: [    2.3963,    2.3963]
+        Range: [    0.7462,    0.7462]
       test16_spheres_out.okc
 
      Optional files generated:
@@ -99,22 +99,22 @@ IV. RESULTS:
 F < foscut found and newDEM_out file created?                              yes
 ------------
 3D POTENTIAL FAILURE
-Bishop's 3D factor of safety:                                           2.4208
-Ordinary 3D factor of safety:                                           2.3963
-Volume (m ^3):                                                     6.59740E+02
-Horizontal surface area (m ^2):                                    4.08750E+02
-Slip surface area (m ^2):                                          4.88149E+02
-Weight (kg):                                                       1.24163E+04
-Number of active columns:                                                 1635
+Bishop's 3D factor of safety:                                           0.7847
+Ordinary 3D factor of safety:                                           0.7462
+Volume (m ^3):                                                     3.03137E+03
+Horizontal surface area (m ^2):                                    5.94425E+02
+Slip surface area (m ^2):                                          7.28158E+02
+Weight (kg):                                                       5.24706E+04
+Number of active columns:                                                 2379
         x-center         y-center          z-center     radius
-         26.9625           49.6500           54.3950   3.27162E+01
-Slip direction, relative to search lattice:                           181.0840
+         36.6157           34.1111           47.4119   2.47961E+01
+Slip direction, relative to search lattice:                           178.8960
 
 Associated 2D potential failure:
-Bishop's 2D factor of safety:                                           1.3012
-Cross-sectional area ( m ^2):                                      8.93527E+01
-Horizontal length ( m ):                                           2.05037E+01
-Arc length ( m ):                                                  2.32315E+01
-Number of active columns:                                                   42
+Bishop's 2D factor of safety:                                           1.2186
+Cross-sectional area ( m ^2):                                      1.39096E+02
+Horizontal length ( m ):                                           2.35044E+01
+Arc length ( m ):                                                  3.34927E+01
+Number of active columns:                                                   48
 ------------
-End date and time: 07/13/2016  13:39:10
+End date and time: 07/20/2016  15:38:35
