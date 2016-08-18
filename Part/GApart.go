@@ -12,7 +12,7 @@ import (
 	"os"
 )
 
-func Partmain(x, y, z, R, alpha float64, mprank int, su, phi, gamma []float64, nc1, nc2, nc3, nc4, nc5 float64) (score, score2 float64, err bool){
+func Partmain(x, y, z, R, alpha float64, mprank int, su, phi, gamma []float64, nc1, nc2, nc3, nc4, nc5, nc6, nc7, nc8, nc9, nc10 float64) (score, score2 float64, err bool){
 // func Partmain(x, y, z, R, alpha float64,rank int, su, phi, gamma []float64 ) (score float64, err bool){
 // func Partmain(x, y, z, R, alpha, FOS float64, Igood []float64) (score float64, err bool){
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -75,7 +75,7 @@ func Partmain(x, y, z, R, alpha float64, mprank int, su, phi, gamma []float64, n
 	// material3 := "3   7.2   20   19.5" 
 	// LayerFile := "emb10layer"
 
-	d1 := []byte("title\nScoops3D example R; Mount Saint Helens\nlengthunits   ceeunits  gammaunits\nm   kPa   kN/m^3\nwater\nno\nnmat\n3\nlnum   cee   phi   gamt\n"+material1+"\n"+material2+"\n"+material3+"\neq\n0\nmethod\nB\nsrch\nsingle\nxcen ycen zcen rad angle\n"+ strconv.FormatFloat(x,'E',-1, 64)+" " + strconv.FormatFloat(y,'E',-1, 64) +" "+ strconv.FormatFloat(z,'E',-1, 64)+" "+ strconv.FormatFloat(R,'E',-1, 64) +" "+ strconv.FormatFloat(alpha,'E',-1, 64) +" "+ strconv.FormatFloat(nc1,'E',-1, 64) +" "+ strconv.FormatFloat(nc2,'E',-1, 64)+" "+ strconv.FormatFloat(nc3,'E',-1, 64) +" "+ strconv.FormatFloat(nc4,'E',-1, 64) +" "+ strconv.FormatFloat(nc5,'E',-1, 64) +"\nremove   foscut\nM   102.0\nisqout\n0\nirelfos\n0\nicritlattice\n0\nisubsurf zfrac\n0   1\nDEM file\n"+FileName+"/input/"+ASCFile+"\nlayer file\n"+FileName+"/input/"+LayerFile+"\noutput directory\nOutput/")
+	d1 := []byte("title\nScoops3D example R; Mount Saint StHelensens\nlengthunits   ceeunits  gammaunits\nm   kPa   kN/m^3\nwater\nno\nnmat\n3\nlnum   cee   phi   gamt\n"+material1+"\n"+material2+"\n"+material3+"\neq\n0\nmethod\nB\nsrch\nsingle\nxcen ycen zcen rad angle\n"+ strconv.FormatFloat(x,'E',-1, 64)+" " + strconv.FormatFloat(y,'E',-1, 64) +" "+ strconv.FormatFloat(z,'E',-1, 64)+" "+ strconv.FormatFloat(R,'E',-1, 64) +" "+ strconv.FormatFloat(alpha,'E',-1, 64) +" "+ strconv.FormatFloat(nc1,'E',-1, 64) +" "+ strconv.FormatFloat(nc2,'E',-1, 64)+" "+ strconv.FormatFloat(nc3,'E',-1, 64) +" "+ strconv.FormatFloat(nc4,'E',-1, 64) +" "+ strconv.FormatFloat(nc5,'E',-1, 64) +" "+ strconv.FormatFloat(nc6,'E',-1, 64) +" "+ strconv.FormatFloat(nc7,'E',-1, 64) +" "+ strconv.FormatFloat(nc8,'E',-1, 64) +" "+ strconv.FormatFloat(nc9,'E',-1, 64) +" "+ strconv.FormatFloat(nc10,'E',-1, 64) +" 1000.0\nremove   foscut\nM   2.0\nisqout\n0\nirelfos\n0\nicritlattice\n0\nisubsurf zfrac\n0   1\nDEM file\n"+FileName+"/input/"+ASCFile+"\nlayer file\n"+FileName+"/input/"+LayerFile+"\noutput directory\nOutput/")
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////3D MULTIPLE MATERIAL DATA////////////////////////////////////////////////////////////////////////
@@ -251,6 +251,9 @@ func SoilP() ([]float64, []float64, []float64, []float64, []float64, []float64, 
 	su11 := []float64{20.8, 400.8, 400.0}
 	phi11:= []float64{18.0, 30.0, 30.0}
 
+	// gamma 	:= []float64{18.82, 18.82, 18.82}
+	// su11 := []float64{20.8, 20.8, 400.0}
+	// phi11:= []float64{18.0, 18.0, 30.0}
 
 	// //////////////////////////////////////////////////////////////////////////
 	// /////////////////////////////Donald&Giam//////////////////////////////////

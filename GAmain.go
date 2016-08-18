@@ -424,7 +424,7 @@ import (
 	// "code.google.com/p/gosl/mpi"
 	// "code.google.com/p/sgal"
 	"fmt"
-	// "math"
+	"math"
 	"scoops3d/Part"
 	"time"
 )
@@ -458,12 +458,14 @@ func main() {
 		///////////////////////////////////////////////////////////////////////////////////////////////////
 		/////////////////////// CASE STUDY 1 & 3 Mount St Helen and Arai & Tagyo///////////////////////////
 		///////////////////////////////////////////////////////////////////////////////////////////////////
-		x, y, z, R, alpha, nc1, nc2, nc3, nc4, nc5 := I[0], I[1], I[2], I[3], I[4], I[5], I[6], I[7], I[8], I[9]		
-
-		// x, y, z, R, alpha = 26.9625, 49.65, 54.395, 32.7162, 181.084
+		x, y, z, R, alpha, nc1, nc2, nc3, nc4, nc5, nc6, nc7, nc8, nc9, nc10 := I[0], I[1], I[2], I[3], I[4], I[5], I[6], I[7], I[8], I[9], I[10], I[11], I[12], I[13], I[14] 
+		nc1 = 0.0
+		// x, y, z, R, alpha := 26.9625, 49.65, 54.395, 32.7162, 181.084
+		// nc1, nc2, nc3, nc4, nc5 := I[0], I[1], I[2], I[3], I[4]
 		// nc1, nc2, nc3, nc4, nc5	= 0.0, 0.0, 0.0, 0.0, 0.0
 
-		FOSS, score2, err = Part.Partmain(x, y, z, R, alpha, mpi.Rank(), su11, phi11, gamma, nc1, nc2, nc3, nc4, nc5)
+
+		FOSS, score2, err = Part.Partmain(x, y, z, R, alpha, mpi.Rank(), su11, phi11, gamma, nc1, nc2, nc3, nc4, nc5, nc6, nc7, nc8, nc9, nc10)
 		// FOSS, _, err = Part.Partmain(x, y, z, R, alpha, su11, phi11, gamma, nc1, nc2, nc3, nc4, nc5)
 		
 		if err == false {		
@@ -475,8 +477,15 @@ func main() {
 		// if alpha > 360.0 || score2 < 1000.0 {
 		// 	err = true
 		// }
+		angflag := false
+		for i := 5; i < len(I)-1; i++ {
+			if math.Abs(I[i+1]-I[i]) > 10.0 || math.Abs(I[i+1]-I[i]) < 0.0 {
+				angflag = true
+				i = len(I)
+			}			
+		}
 
-		if alpha > 360.0 || score2 < 1000.0 {
+		if alpha > 360.0 || score2 < 1000.0 || angflag == true {
 			err = true
 		}
 		
@@ -495,7 +504,8 @@ func main() {
 	var d sgal.Data
 
 	// //AriaTagyo
-	err := d.Init([]float64{0.0, 0.0, 16.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0}, []float64{60.0, 60.0, 100.0, 60.0, 360.0, 5.0, 5.0, 5.0, 5.0, 5.0}) //Creating the grid for possible answers
+	err := d.Init([]float64{0.0, 0.0, 16.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0}, []float64{60.0, 60.0, 100.0, 60.0, 360.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 10.0}) //Creating the grid for possible answers
+	// err := d.Init([]float64{0.0, 0.0, 0.0, 0.0, 0.0}, []float64{10.0, 10.0, 10.0, 10.0, 10.0}) //Creating the grid for possible answers
 
 	//Cone
 	// err := d.Init([]float64{-6000.0, -6000.0, 0.0, 0.0, 0.0, 0.0, 0.0}, []float64{10000.0, 4000.0, 2000.0, 2000.0, 360.0, 6.3, 5.0}) //Creating the grid for possible answers

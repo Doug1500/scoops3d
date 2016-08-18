@@ -180,7 +180,7 @@
 !xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
         USE CommonData
         !!!!!!!!!!!!!!!!!!!!!!!!!!!
-        USE GridData, ONLY: nx,ny,nz,delxy,zmin,delz,xll,yll,xcen,ycen,zcen,nci1,nci2,nci3,nci4,nci5,&
+        USE GridData, ONLY: nx,ny,nz,delxy,zmin,delz,xll,yll,xcen,ycen,zcen,nci1,nci2,nci3,nci4,nci5,nci6,nci7,nci8,nci9,nci10,xst,&
                            rad,angle,pi,zmax,demflag,zdem,lengthunits,xcenrot,ycenrot,zcenrot
         !!!!!!!!!!!!!!!!!!!!!!!!!!
         USE MaterialData, ONLY: nmat,gsameall,gsameeach,gamw,eq,cee,tanphi,gamr,gamsurf,ru,&
@@ -275,6 +275,11 @@
         nci3 = rnull
         nci4 = rnull
         nci5 = rnull
+        nci6 = rnull
+        nci7 = rnull
+        nci8 = rnull
+        nci9 = rnull
+        nci10 = rnull
         !!!!!!!!!!!!!!!!!!!!!!!!
         angle = rnull
         isqout = 0
@@ -326,7 +331,7 @@
           
           ! READ (*,1000,IOSTAT=ios) filin
           ! OPEN (12,STATUS = 'old',FILE = filin,IOSTAT=ios2)
-
+! 
           filin = '/home/yewintun/mygo/src/scoops3d/test16.scp'        
           OPEN (12,STATUS = 'old',FILE = filin,IOSTAT=ios2)
           ios = 0
@@ -434,7 +439,7 @@
           IF (srch(1:6).eq.'single'.or.srch(1:6).eq.'SINGLE') THEN
 !       If single parameters                            
               READ (12,*)
-              READ(12,*,IOSTAT=ios2) xcen,ycen,zcen,rad,angle,nci1,nci2,nci3,nci4,nci5
+              READ(12,*,IOSTAT=ios2) xcen,ycen,zcen,rad,angle,nci1,nci2,nci3,nci4,nci5,nci6,nci7,nci8,nci9,nci10,xst
               srch = 'single'
               single = 1
               ifos2d = 1  ! Always generate 2-D data with single option  

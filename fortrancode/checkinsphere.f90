@@ -28,7 +28,7 @@
 !xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
         USE CommonData
-        USE GridData, ONLY: delxy,xcen,ycen,zcen,radsq,zdemnodes,nci1,nci2,nci3,nci4,nci5
+        USE GridData, ONLY: delxy,xcen,ycen,zcen,radsq,zdemnodes,nci1,nci2,nci3,nci4,nci5,nci6,nci7,nci8,nci9,nci10,xst
         USE SetData, ONLY: insphere,zb,xdem,ydem,omini,omaxi,ominj,omaxj
         
         IMPLICIT NONE
@@ -42,15 +42,13 @@
         y = ydem(ii,jj)
         xdiffsq = (x-xcen)*(x-xcen)
         ydiffsq = (y-ycen)*(y-ycen)
-        mz2 = radsq-(xdiffsq+ydiffsq)  
+        mz2 = radsq-(xdiffsq+ydiffsq)
+
 !     Check whether DEM node is intersected by sphere. mz2 will
 !     be less than zero if x or y of node is outside sphere.     
         !********************************************************************
         IF (mz2 .gt. 0.0_pr) THEN
           mz = sqrt(mz2)
-          
-      
-
 !     If DEM elevation is above bottom of sphere at x,y location
           IF (zdemnodes(ii,jj).ge.(zcen-mz)) THEN
 !     Mark case where elevation of the DEM surface is completely above the
@@ -59,37 +57,69 @@
             IF (zdemnodes(ii,jj).ge.(zcen+mz)) THEN
               insphere(ii,jj) = -1
               zb(ii,jj) = rnull
-            ELSE    
-              insphere(ii,jj) = 1 
+            ELSE
+              insphere(ii,jj) = 1
 !     Find elevation of slip surface.
-              ! IF (ii.le.85.5) THEN
-              !   mz = sqrt(mz2) -  nci1
-              ! ELSE IF (ii.ge.85.5 .and. ii.le.89.3) THEN
-              !   mz = sqrt(mz2) -  nci2
-              ! ELSE IF (ii.ge.89.3 .and. ii.le.93.1) THEN
-              !   mz = sqrt(mz2) -  nci3
-              ! ELSE IF (ii.ge.93.1 .and. ii.le.96.9) THEN
-              !   mz = sqrt(mz2) -  nci4
-              ! ELSE IF (ii.ge.96.9 .and. ii.le.100.7) THEN
-              !   mz = sqrt(mz2) -  nci5
-              ! END IF
               mz = sqrt(mz2)
-              ! IF (ii.ge.85.5) THEN
-              !   zb(ii,jj) = zcen - mz - 5.0
+              ! zb(ii,jj) = zcen - mz
+              ! IF (ii.le.85.5) THEN
+              !   zb(ii,jj) = zcen - mz -  nci1
+              ! ELSE IF (ii.ge.85.5 .and. ii.le.89.3) THEN
+              !   zb(ii,jj) = zcen - mz -  nci2
+              ! ELSE IF (ii.ge.89.3 .and. ii.le.93.1) THEN
+              !   zb(ii,jj) = zcen - mz -  nci3
+              ! ELSE IF (ii.ge.93.1 .and. ii.le.96.9) THEN
+              !   zb(ii,jj) = zcen - mz -  nci4
               ! ELSE
-              !   zb(ii,jj) = zcen - mz
+              !   zb(ii,jj) = zcen - mz - nci5
               ! END IF
-              IF (ii.le.85.5) THEN
-                zb(ii,jj) = zcen - mz -  nci1
-              ELSE IF (ii.ge.85.5 .and. ii.le.89.3) THEN
-                zb(ii,jj) = zcen - mz -  nci2
-              ELSE IF (ii.ge.89.3 .and. ii.le.93.1) THEN
-                zb(ii,jj) = zcen - mz -  nci3
-              ELSE IF (ii.ge.93.1 .and. ii.le.96.9) THEN
-                zb(ii,jj) = zcen - mz -  nci4
-              ELSE
-                zb(ii,jj) = zcen - mz -  nci5
+              IF (ii.le.xst) THEN
+                xst = ii
               END IF
+
+              IF (ii.le.(xst+nci10)) THEN
+                zb(ii,jj) = zcen - mz
+              ELSE IF (ii.ge.(xst+nci10) .and. ii.le.(xst+nci10*2.0)) THEN
+                zb(ii,jj) = zcen - mz -  nci1
+              ELSE IF (ii.ge.(xst+nci10*2.0) .and. ii.le.(xst+nci10*3.0)) THEN
+                zb(ii,jj) = zcen - mz -  nci2
+              ELSE IF (ii.ge.(xst+nci10*3.0) .and. ii.le.(xst+nci10*4.0)) THEN
+                zb(ii,jj) = zcen - mz -  nci3              
+              ELSE IF (ii.ge.(xst+nci10*4.0) .and. ii.le.(xst+nci10*5.0)) THEN
+                zb(ii,jj) = zcen - mz -  nci4              
+              ELSE IF (ii.ge.(xst+nci10*5.0) .and. ii.le.(xst+nci10*6.0)) THEN
+                zb(ii,jj) = zcen - mz -  nci5              
+              ELSE IF (ii.ge.(xst+nci10*6.0) .and. ii.le.(xst+nci10*7.0)) THEN
+                zb(ii,jj) = zcen - mz -  nci6              
+              ELSE IF (ii.ge.(xst+nci10*7.0) .and. ii.le.(xst+nci10*8.0)) THEN
+                zb(ii,jj) = zcen - mz -  nci7              
+              ELSE IF (ii.ge.(xst+nci10*8.0) .and. ii.le.(xst+nci10*9.0)) THEN
+                zb(ii,jj) = zcen - mz -  nci8              
+              ELSE
+                zb(ii,jj) = zcen - mz -  nci9              
+              END IF
+
+              ! IF (ii.le.(xst+nci10)) THEN
+              !   zb(ii,jj) = zcen - mz
+              ! ELSE IF (ii.ge.(xst+nci10) .and. ii.le.(xst+nci10*2.0)) THEN
+              !   zb(ii,jj) = nci1
+              ! ELSE IF (ii.ge.(xst+nci10*2.0) .and. ii.le.(xst+nci10*3.0)) THEN
+              !   zb(ii,jj) = nci2
+              ! ELSE IF (ii.ge.(xst+nci10*3.0) .and. ii.le.(xst+nci10*4.0)) THEN
+              !   zb(ii,jj) = nci3              
+              ! ELSE IF (ii.ge.(xst+nci10*4.0) .and. ii.le.(xst+nci10*5.0)) THEN
+              !   zb(ii,jj) = nci4              
+              ! ELSE IF (ii.ge.(xst+nci10*5.0) .and. ii.le.(xst+nci10*6.0)) THEN
+              !   zb(ii,jj) = nci5              
+              ! ELSE IF (ii.ge.(xst+nci10*6.0) .and. ii.le.(xst+nci10*7.0)) THEN
+              !   zb(ii,jj) = nci6              
+              ! ELSE IF (ii.ge.(xst+nci10*7.0) .and. ii.le.(xst+nci10*8.0)) THEN
+              !   zb(ii,jj) = nci7              
+              ! ELSE IF (ii.ge.(xst+nci10*8.0) .and. ii.le.(xst+nci10*9.0)) THEN
+              !   zb(ii,jj) = nci8              
+              ! ELSE
+              !   zb(ii,jj) = nci9              
+              ! END IF
             END IF
 !     Keep track of min and max locations and total number 
 !     of all intersected nodes.           

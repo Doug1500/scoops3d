@@ -48,7 +48,7 @@
 !xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
  
       USE CommonData
-      USE GridData, ONLY: delxy,xcen,ycen,zcen,radsq,nci1,nci2,nci3,nci4,nci5,zdemnodes,zdem,halfdelxy
+      USE GridData, ONLY: delxy,xcen,ycen,zcen,radsq,nci1,nci2,nci3,nci4,nci5,nci6,nci7,nci8,nci9,nci10,zdemnodes,zdem,halfdelxy,xst
       USE SetData, ONLY: subset,zb,insphere,in,xdem,ydem,zmid,outnodes
       USE FailSurfData, ONLY: ifailsurf,failsurf      
               
@@ -177,34 +177,63 @@
               Call WriteError(1,errmessage,problemtype,'no','no ',0,' ')              
 !              Print *,radsq,xrad,yrad,zz
             END IF                
+            ! zrad = SQRT(zz)
             ! IF (i.le.85.5) THEN
-            !   zrad = SQRT(zz) -  nci1
+            !     zrad = SQRT(zz) -  nci1
             ! ELSE IF (i.ge.85.5 .and. i.le.89.3) THEN
-            !   zrad = SQRT(zz) -  nci2
+            !     zrad = SQRT(zz) -  nci2
             ! ELSE IF (i.ge.89.3 .and. i.le.93.1) THEN
-            !   zrad = SQRT(zz) -  nci3
+            !     zrad = SQRT(zz) -  nci3
             ! ELSE IF (i.ge.93.1 .and. i.le.96.9) THEN
-            !   zrad = SQRT(zz) -  nci4
-            ! ELSE IF (i.ge.96.9 .and. i.le.100.7) THEN
-            !   zrad = SQRT(zz) -  nci5
-            ! END IF
-            zrad = SQRT(zz)
-            ! IF (i.ge.85.5) THEN
-            !  zmid(i,j) = zcen - zrad - 5.0
+            !     zrad = SQRT(zz) -  nci4
             ! ELSE
-             ! zmid(i,j) = zcen - zrad
+            !     zrad = SQRT(zz) -  nci5
             ! END IF
-            IF (i.le.85.5) THEN
-              zmid(i,j) = zcen - zrad -  nci1
-            ELSE IF (i.ge.85.5 .and. i.le.89.3) THEN
-              zmid(i,j) = zcen - zrad -  nci2
-            ELSE IF (i.ge.89.3 .and. i.le.93.1) THEN
-              zmid(i,j) = zcen - zrad -  nci3
-            ELSE IF (i.ge.93.1 .and. i.le.96.9) THEN
-              zmid(i,j) = zcen - zrad -  nci4
+
+            IF (i.le.(xst+nci10)) THEN
+              zrad = SQRT(zz)
+            ELSE IF (i.ge.(xst+nci10) .and. i.le.(xst+nci10*2.0)) THEN
+              zrad = SQRT(zz) -  nci1
+            ELSE IF (i.ge.(xst+nci10*2.0) .and. i.le.(xst+nci10*3.0)) THEN
+              zrad = SQRT(zz) -  nci2
+            ELSE IF (i.ge.(xst+nci10*3.0) .and. i.le.(xst+nci10*4.0)) THEN
+              zrad = SQRT(zz) -  nci3
+            ELSE IF (i.ge.(xst+nci10*4.0) .and. i.le.(xst+nci10*5.0)) THEN
+              zrad = SQRT(zz) -  nci4
+            ELSE IF (i.ge.(xst+nci10*5.0) .and. i.le.(xst+nci10*6.0)) THEN
+              zrad = SQRT(zz) -  nci5
+            ELSE IF (i.ge.(xst+nci10*6.0) .and. i.le.(xst+nci10*7.0)) THEN
+              zrad = SQRT(zz) -  nci6
+            ELSE IF (i.ge.(xst+nci10*7.0) .and. i.le.(xst+nci10*8.0)) THEN
+              zrad = SQRT(zz) -  nci7
+            ELSE IF (i.ge.(xst+nci10*8.0) .and. i.le.(xst+nci10*9.0)) THEN
+              zrad = SQRT(zz) -  nci8
             ELSE
-              zmid(i,j) = zcen - zrad -  nci5
+              zrad = SQRT(zz) -  nci9
             END IF
+
+
+            ! IF (i.le.(xst+nci10)) THEN
+            !   zrad = SQRT(zz)
+            ! ELSE IF (i.ge.(xst+nci10) .and. i.le.(xst+nci10*2.0)) THEN
+            !   zrad = nci1
+            ! ELSE IF (i.ge.(xst+nci10*2.0) .and. i.le.(xst+nci10*3.0)) THEN
+            !   zrad = nci2
+            ! ELSE IF (i.ge.(xst+nci10*3.0) .and. i.le.(xst+nci10*4.0)) THEN
+            !   zrad = nci3
+            ! ELSE IF (i.ge.(xst+nci10*4.0) .and. i.le.(xst+nci10*5.0)) THEN
+            !   zrad = nci4
+            ! ELSE IF (i.ge.(xst+nci10*5.0) .and. i.le.(xst+nci10*6.0)) THEN
+            !   zrad = nci5
+            ! ELSE IF (i.ge.(xst+nci10*6.0) .and. i.le.(xst+nci10*7.0)) THEN
+            !   zrad = nci6
+            ! ELSE IF (i.ge.(xst+nci10*7.0) .and. i.le.(xst+nci10*8.0)) THEN
+            !   zrad = nci7
+            ! ELSE IF (i.ge.(xst+nci10*8.0) .and. i.le.(xst+nci10*9.0)) THEN
+            !   zrad = nci8
+            ! ELSE
+            !   zrad = nci9
+            ! END IF
           END IF
           IF (zmid(i,j).gt.zdem(i,j)) zmid(i,j) = zdem(i,j)
         END DO

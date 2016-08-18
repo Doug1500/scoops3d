@@ -1,5 +1,5 @@
 title
-Scoops3D example R; Mount Saint Helens
+Scoops3D example R; Mount Saint StHelensens
 lengthunits   ceeunits  gammaunits
 m   kPa   kN/m^3
 water
@@ -17,9 +17,9 @@ B
 srch
 single
 xcen ycen zcen rad angle
-2.69625E+01 4.965E+01 5.4395E+01 3.27162E+01 1.81084E+02 0E+00 0E+00 0E+00 0E+00 0E+00
+2.36607E+01 2.91187E+01 6.63673E+01 4.42176E+01 1.84284E+02 3.16448E+01 3.06491E+01 2.96259E+01 3.43072E+01 2.68283E+01 2.72942E+01 3.28488E+01 3.21712E+01 3.07651E+01 5E+00 1000.0
 remove   foscut
-M   102.0
+M   2.0
 isqout
 0
 irelfos

@@ -206,8 +206,8 @@
 !xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
       USE CommonData
-      USE GridData, ONLY: delxy,xcen,ycen,zcen,angle,radsq,nci1,nci2,nci3,nci4,nci5,zdem,pi,halfdelxy,&
-            zdemnodes,xcenrot,ycenrot,zcenrot,cellarea
+      USE GridData, ONLY: delxy,xcen,ycen,zcen,angle,radsq,nci1,nci2,nci3,nci4,nci5,nci6,nci7,nci8,nci9,nci10,zdem,pi,halfdelxy,&
+            zdemnodes,xcenrot,ycenrot,zcenrot,cellarea, xst
       USE MaterialData, ONLY: nmat,gsameall,gsameeach,gamw,eq,layer,cee,tanphi,&
             gamr,ru,uwtlay,duwtlaydz,gamsurf,thetasat,thetares,&
             fxa,fxn,fxm,fxr,vga,vgn
@@ -431,26 +431,91 @@
               CLOSE (33)
               Call WriteError(1,errmessage,problemtype,'no','no ',0,' ')     
             END IF         
-
+            
             zrad = SQRT(zz)
             ! IF (i.ge.85.5) THEN
             !   zmid(i,j) = zcen - zrad - 5.0
             ! ELSE
             !   zmid(i,j) = zcen - zrad
             ! END IF
-            IF (i.le.85.5) THEN
+            ! IF (i.le.85.5) THEN
+            !   zmid(i,j) = zcen - zrad -  nci1
+            ! ELSE IF (i.ge.85.5 .and. i.le.89.3) THEN
+            !   zmid(i,j) = zcen - zrad -  nci2
+            ! ELSE IF (i.ge.89.3 .and. i.le.93.1) THEN
+            !   zmid(i,j) = zcen - zrad -  nci3
+            ! ELSE IF (i.ge.93.1 .and. i.le.96.9) THEN
+            !   zmid(i,j) = zcen - zrad -  nci4
+            ! ELSE
+            !   zmid(i,j) = zcen - zrad -  nci5
+            ! END IF
+            
+            IF (i.le.(xst+nci10)) THEN
+              zmid(i,j) = zcen - zrad
+            ELSE IF (i.ge.(xst+nci10) .and. i.le.(xst+nci10*2.0)) THEN
               zmid(i,j) = zcen - zrad -  nci1
-            ELSE IF (i.ge.85.5 .and. i.le.89.3) THEN
+            ELSE IF (i.ge.(xst+nci10*2.0) .and. i.le.(xst+nci10*3.0)) THEN
               zmid(i,j) = zcen - zrad -  nci2
-            ELSE IF (i.ge.89.3 .and. i.le.93.1) THEN
+            ELSE IF (i.ge.(xst+nci10*3.0) .and. i.le.(xst+nci10*4.0)) THEN
               zmid(i,j) = zcen - zrad -  nci3
-            ELSE IF (i.ge.93.1 .and. i.le.96.9) THEN
+            ELSE IF (i.ge.(xst+nci10*4.0) .and. i.le.(xst+nci10*5.0)) THEN
               zmid(i,j) = zcen - zrad -  nci4
-            ELSE
+            ELSE IF (i.ge.(xst+nci10*5.0) .and. i.le.(xst+nci10*6.0)) THEN
               zmid(i,j) = zcen - zrad -  nci5
+            ELSE IF (i.ge.(xst+nci10*6.0) .and. i.le.(xst+nci10*7.0)) THEN
+              zmid(i,j) = zcen - zrad -  nci6
+            ELSE IF (i.ge.(xst+nci10*7.0) .and. i.le.(xst+nci10*8.0)) THEN
+              zmid(i,j) = zcen - zrad -  nci7
+            ELSE IF (i.ge.(xst+nci10*8.0) .and. i.le.(xst+nci10*9.0)) THEN
+              zmid(i,j) = zcen - zrad -  nci8
+            ELSE
+              zmid(i,j) = zcen - zrad -  nci9 
             END IF
 
+            ! IF (i.le.(xst+nci10)) THEN
+            !   zmid(i,j) = zcen - zrad
+            ! ELSE IF (i.ge.(xst+nci10) .and. i.le.(xst+nci10*2.0)) THEN
+            !   zmid(i,j) = nci1
+            ! ELSE IF (i.ge.(xst+nci10*2.0) .and. i.le.(xst+nci10*3.0)) THEN
+            !   zmid(i,j) = nci2
+            ! ELSE IF (i.ge.(xst+nci10*3.0) .and. i.le.(xst+nci10*4.0)) THEN
+            !   zmid(i,j) = nci3
+            ! ELSE IF (i.ge.(xst+nci10*4.0) .and. i.le.(xst+nci10*5.0)) THEN
+            !   zmid(i,j) = nci4
+            ! ELSE IF (i.ge.(xst+nci10*5.0) .and. i.le.(xst+nci10*6.0)) THEN
+            !   zmid(i,j) = nci5
+            ! ELSE IF (i.ge.(xst+nci10*6.0) .and. i.le.(xst+nci10*7.0)) THEN
+            !   zmid(i,j) = nci6
+            ! ELSE IF (i.ge.(xst+nci10*7.0) .and. i.le.(xst+nci10*8.0)) THEN
+            !   zmid(i,j) = nci7
+            ! ELSE IF (i.ge.(xst+nci10*8.0) .and. i.le.(xst+nci10*9.0)) THEN
+            !   zmid(i,j) = nci8
+            ! ELSE
+            !   zmid(i,j) = nci9 
+            ! END IF
+            ! IF (i.le.(xst+nci5+nci6+nci7+nci8+nci9+nci10)) THEN
+            !   zmid(i,j) = zcen - zrad
+            ! ELSE IF (i.ge.(xst+nci5) .and. i.le.(xst+nci5*2.0)) THEN
+            !   zmid(i,j) = zcen - zrad -  nci1
+            ! ELSE IF (i.ge.(xst+nci5*2.0) .and. i.le.(xst+nci5*3.0)) THEN
+            !   zmid(i,j) = zcen - zrad -  nci2
+            ! ELSE IF (i.ge.(xst+nci5*3.0) .and. i.le.(xst+nci5*4.0)) THEN
+            !   zmid(i,j) = zcen - zrad -  nci3
+            ! ELSE
+            !   zmid(i,j) = zcen - zrad -  nci4
+            ! END IF
+            ! IF (i.le.(85.5-30.0)) THEN
+            !   zmid(i,j) = zcen - zrad -  nci1
+            ! ELSE IF (i.ge.(85.5-30.0) .and. i.le.(89.3-30.0)) THEN
+            !   zmid(i,j) = zcen - zrad -  nci2
+            ! ELSE IF (i.ge.(89.3-30.0) .and. i.le.(93.1-30.0)) THEN
+            !   zmid(i,j) = zcen - zrad -  nci3
+            ! ELSE
+            !   zmid(i,j) = zcen - zrad -  nci4
+            ! END IF
+            ! zmid(i,j) = zcen - zrad
             zmidbase = zmid(i,j)
+
           
             IF (zmidbase.ge.ztop) CYCLE
               

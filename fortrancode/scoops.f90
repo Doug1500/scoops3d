@@ -313,8 +313,8 @@
 
         USE CommonData
         !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        USE GridData, ONLY: nx,ny,nz,delxy,xcen,ycen,zcen,nci1,nci2,nci3,nci4,nci5,zmin,rad,xll,yll,demflag,&
-                            radsq,zdem,xllcorner,yllcorner,lengthunits,&
+        USE GridData, ONLY: nx,ny,nz,delxy,xcen,ycen,zcen,nci1,nci2,nci3,nci4,nci5,nci6,nci7,nci8,zmin,rad,xll,yll,demflag,&
+                            radsq,zdem,xllcorner,yllcorner,lengthunits,nci9,nci10,&
                             halfdelxy,zdemnodes,nbdy
         USE MaterialData, ONLY: nmat,layer
         USE WaterData, ONLY: iwater,piezo,isurfwat,surfwat

@@ -1,0 +1,36 @@
+title
+Scoops3D example R; Mount Saint StHelensens
+lengthunits   ceeunits  gammaunits
+m   kPa   kN/m^3
+water
+no
+nmat
+3
+lnum   cee   phi   gamt
+1   2.08E+01   1.8E+01   1.882E+01
+2   4.008E+02   3E+01   1.882E+01
+3   4E+02   3E+01   1.882E+01
+eq
+0
+method
+B
+srch
+single
+xcen ycen zcen rad angle
+2.69625E+01 4.965E+01 5.4395E+01 3.27162E+01 1.8E+02 3E+00 1E+01 8E+00 4E+00 5E+00 0.0
+remove   foscut
+M   102.0
+isqout
+0
+irelfos
+0
+icritlattice
+0
+isubsurf zfrac
+0   1
+DEM file
+AraiTagyo/input/emb20DEM.asc
+layer file
+AraiTagyo/input/emb20layer
+output directory
+Output/

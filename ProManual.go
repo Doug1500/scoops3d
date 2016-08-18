@@ -97,7 +97,7 @@ package main
 
 import (
 	"fmt"
-	// "math"
+	"math"
 	"scoops3d/Part"
 	"time"
 )
@@ -111,16 +111,28 @@ func main() {
 	//////////////////////////////////////MATERIAL PROPERTIES//////////////////////////////////////////////
 	_, _, _, _, gamma, su11, phi11 := Part.SoilP()
 
-	// var x, y, z, R, alpha, nc1, nc2, nc3, nc4, nc5 float64
-	// fmt.Scan(&x, &y, &z, &R, &alpha, &nc1, &nc2, &nc3, &nc4, &nc5 )	
-	x, y, z, R, alpha := 26.9625, 49.65, 54.395, 32.7162, 180.0
-	// nc1, nc2, nc3, nc4, nc5	:= 0.0, 0.0, 0.1, 3.0, 5.0
-	nc1, nc2, nc3, nc4, nc5	:= 0.0, 0.0, 0.0, 0.0, 5.0
+	var x, y, z, R, alpha, nc1, nc2, nc3, nc4, nc5, nc6, nc7, nc8, nc9, nc10 float64
+	fmt.Scan(&x, &y, &z, &R, &alpha, &nc1, &nc2, &nc3, &nc4, &nc5, &nc6, &nc7, &nc8, &nc9, &nc10)	
+	nc1 = 0.0
+	// x, y, z, R, alpha := 26.9625, 49.65, 54.395, 32.7162, 180.0
+	// nc1, nc2, nc3, nc4, nc5, nc6, nc7, nc8, nc9, nc10	:= 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
+	// nc1, nc2, nc3, nc4, nc5	:= 0.0, 0.0, 7.0, 5.0, 20.0
+	// nc1, nc2, nc3, nc4, nc5	:= 0.0, 0.566502, 1.08243, 1.82565, 2.55044
+	// nc1, nc2, nc3, nc4, nc5	:= 10.0, 0.66712, 8.01744, 0.4856, 9.70392
 	// x, y, z, R, alpha = 26.9625, 49.65, 54.395, 32.7162, 181.084
-		
+	I := []float64{x, y, z, R, alpha, nc1, nc2, nc3, nc4, nc5, nc6, nc7, nc8, nc9, nc10}
+	angflag := false
+		for i := 5; i < len(I)-1; i++ {
+			fmt.Println(math.Abs(I[i+1]-I[i]))
+			if math.Abs(I[i+1]-I[i]) > 5.0 || math.Abs(I[i+1]-I[i]) < 0.0 {
+				angflag = true
+				i = len(I)
+			}			
+		}
+
 	// FOSS, score2, err = Part.Partmain(x, y, z, R, alpha, mpi.Rank(), su11, phi11, gamma)
-	score, _, err := Part.Partmain(x, y, z, R, alpha, 16, su11, phi11, gamma, nc1, nc2, nc3, nc4, nc5)
+	score, _, err := Part.Partmain(x, y, z, R, alpha, 16, su11, phi11, gamma, nc1, nc2, nc3, nc4, nc5, nc6, nc7, nc8, nc9, nc10)
 	
-	fmt.Println(score, err)
+	fmt.Println(score, err,angflag)
 
 }

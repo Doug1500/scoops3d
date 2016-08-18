@@ -8,8 +8,8 @@
 
 This file: Output/test16_out.txt                                                                                                                                                                                                       
 
-Start date and time: 07/22/2016  15:20:22
-Description: Scoops3D example R; Mount Saint Helens                                                                                  
+Start date and time: 08/18/2016  12:59:07
+Description: Scoops3D example R; Mount Saint StHelensens                                                                             
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 I. INPUT FILES:
@@ -65,14 +65,14 @@ Analysis method (method):                                               Bishop
 ------------
 SEARCH METHOD (srch)                                                    single
          xcen(m )        ycen(m )   zcen(m )  radius(m )
-         26.9625         49.6500   54.3950    32.71620
+         21.8921         54.7037   64.3521    41.03540
 
-Slip direction, relative to lattice,                                  180.0000
+Slip direction, relative to lattice,                                  181.9340
 ------------
 ADDITIONAL OUTPUT FILES AND PARAMETERS
 Create new DEM file (remove):                                                M
    (surface with minimum F<foscut removed)
-F cutoff for removing material from new DEM (foscut):                1.020E+02
+F cutoff for removing material from new DEM (foscut):                2.000E+00
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 III. OUTPUT FILES GENERATED: 
@@ -85,9 +85,9 @@ III. OUTPUT FILES GENERATED:
       test16_slope_out.asc
         Range: [    0.0000,   33.6901]
       test16_fos3d_out.asc
-        Range: [    2.6314,    2.6314]
+        Range: [    1.2165,    1.2165]
       test16_ordfos3d_out.asc
-        Range: [    2.6942,    2.6942]
+        Range: [    1.1804,    1.1804]
       test16_spheres_out.okc
 
      Optional files generated:
@@ -99,22 +99,22 @@ IV. RESULTS:
 F < foscut found and newDEM_out file created?                              yes
 ------------
 3D POTENTIAL FAILURE
-Bishop's 3D factor of safety:                                           2.6314
-Ordinary 3D factor of safety:                                           2.6942
-Volume (m ^3):                                                     2.55294E+03
-Horizontal surface area (m ^2):                                    6.72125E+02
-Slip surface area (m ^2):                                          8.22191E+02
-Weight (kg):                                                       4.80463E+04
-Number of active columns:                                                 2744
+Bishop's 3D factor of safety:                                           1.2165
+Ordinary 3D factor of safety:                                           1.1804
+Volume (m ^3):                                                     1.33175E+03
+Horizontal surface area (m ^2):                                    3.49348E+02
+Slip surface area (m ^2):                                          4.15420E+02
+Weight (kg):                                                       2.50633E+04
+Number of active columns:                                                 1437
         x-center         y-center          z-center     radius
-         26.9625           49.6500           54.3950   3.27162E+01
-Slip direction, relative to search lattice:                           180.0000
+         21.8921           54.7037           64.3521   4.10354E+01
+Slip direction, relative to search lattice:                           181.9340
 
 Associated 2D potential failure:
-Bishop's 2D factor of safety:                                           3.8362
-Cross-sectional area ( m ^2):                                      9.50969E+01
-Horizontal length ( m ):                                           2.49991E+01
-Arc length ( m ):                                                  2.92800E+01
-Number of active columns:                                                   51
+Bishop's 2D factor of safety:                                           2.0880
+Cross-sectional area ( m ^2):                                      2.89290E+01
+Horizontal length ( m ):                                           1.75186E+01
+Arc length ( m ):                                                  2.04456E+01
+Number of active columns:                                                   38
 ------------
-End date and time: 07/22/2016  15:20:22
+End date and time: 08/18/2016  12:59:07

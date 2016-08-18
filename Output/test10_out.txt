@@ -1,0 +1,120 @@
+    *************************************************************
+                               Scoops3D
+          3D Slope Stability Throughout a Digital Landscape
+                        U.S. Geological Survey
+                             Version: 1.0                                               
+    *************************************************************
+
+
+This file: Output/test10_out.txt                                                                                                                                                                                                       
+
+Start date and time: 08/18/2016  13:04:14
+Description: Scoops3D example R; Mount Saint StHelensens                                                                             
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+I. INPUT FILES:
+  DEM file: AraiTagyo/input/emb20DEM.asc                                                                                                                                                                                                
+  Material layer file: AraiTagyo/input/emb20layer                                                                                                                                                                                                  
+  Main parameter input file: /home/yewintun/mygo/src/scoops3d/test10.scp                                                                                                                                                             
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+II. SIMULATION PARAMETERS:
+------------
+DEM
+Input file for topography: AraiTagyo/input/emb20DEM.asc                                                                                                                                                                                                
+  Dimensions of DEM grid (x,y):                                      133   133
+  Number of cells in DEM grid:                                           17689
+  Number of non-null cells in DEM grid:                                  17689
+  Horizontal resolution of DEM grid (m ):                                 0.50
+  Minimum elevation of DEM (m ):                                        15.000
+  Maximum elevation of DEM (m ):                                        35.000
+  xllcorner and yllcorner (m ):                           0.000          0.000
+------------
+UNIT DESCRIPTORS (used for labels in output files)
+lengthunits   ceeunits    gammaunits
+     m          kPa         kN/m^3  
+------------
+MATERIAL PROPERTIES
+Property method:                                                         layer
+Number of layers (nmat):                                                     3
+                      total unit wt.  
+lnum    cee     phi      gamt  
+        kPa             kN/m^3  
+  1     20.80  18.000   18.820 
+  2    400.80  30.000   18.820 
+  3    400.00  30.000   18.820 
+
+Input file prefix for material layers: AraiTagyo/input/emb20layer                                                                                                                                                                                                  
+  Layer #    1
+    Number of non-null cells in layer:                                   11172
+    Minimum bottom elevation (m ):                                   1.917E+01
+    Maximum bottom elevation (m ):                                   3.300E+01
+  Layer #    2
+    Number of non-null cells in layer:                                   17689
+    Minimum bottom elevation (m ):                                   3.000E+00
+    Maximum bottom elevation (m ):                                   2.500E+01
+------------
+GROUNDWATER CONFIGURATION
+Groundwater method (water):                                               None
+------------
+EARTHQUAKE LOADING
+Horizontal pseudo-acceleration coefficient (dimensionless)(eq):          0.000
+------------
+LIMIT-EQUILIBRIUM METHOD
+Analysis method (method):                                               Bishop
+------------
+SEARCH METHOD (srch)                                                    single
+         xcen(m )        ycen(m )   zcen(m )  radius(m )
+         21.8921         19.8071   64.3521    41.03536
+
+Slip direction, relative to lattice,                                  181.9338
+------------
+ADDITIONAL OUTPUT FILES AND PARAMETERS
+Create new DEM file (remove):                                                M
+   (surface with minimum F<foscut removed)
+F cutoff for removing material from new DEM (foscut):                2.000E+00
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+III. OUTPUT FILES GENERATED: 
+
+     LOCATION FOR OUTPUT FILES:
+          Output/                                                                                                                                                                                                 
+
+      test10_out.txt
+      test10_errors_out.txt
+      test10_slope_out.asc
+        Range: [    0.0000,   33.6901]
+      test10_fos3d_out.asc
+        Range: [    1.2244,    1.2244]
+      test10_ordfos3d_out.asc
+        Range: [    1.1888,    1.1888]
+      test10_spheres_out.okc
+
+     Optional files generated:
+      test10_newDEM_out.asc
+        Range: [    15.0000,    35.0000]
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+IV. RESULTS:
+F < foscut found and newDEM_out file created?                              yes
+------------
+3D POTENTIAL FAILURE
+Bishop's 3D factor of safety:                                           1.2244
+Ordinary 3D factor of safety:                                           1.1888
+Volume (m ^3):                                                     1.34523E+03
+Horizontal surface area (m ^2):                                    3.57518E+02
+Slip surface area (m ^2):                                          4.25876E+02
+Weight (kg):                                                       2.53171E+04
+Number of active columns:                                                 1477
+        x-center         y-center          z-center     radius
+         21.8921           19.8071           64.3521   4.10354E+01
+Slip direction, relative to search lattice:                           181.9338
+
+Associated 2D potential failure:
+Bishop's 2D factor of safety:                                           2.0865
+Cross-sectional area ( m ^2):                                      2.89767E+01
+Horizontal length ( m ):                                           1.75326E+01
+Arc length ( m ):                                                  2.04630E+01
+Number of active columns:                                                   38
+------------
+End date and time: 08/18/2016  13:04:14
